@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# script/deploy: Use this script to deploy to Heroku
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+heroku login
+
+if [ -n "$1" ]; then
+  # deploy a specific branch
+  git push heroku "$1"
+else
+  git push heroku main
+end
+
+heroku run rake db:migrate

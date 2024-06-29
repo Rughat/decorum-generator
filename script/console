@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# script/console: Use this script to launch a local Rails console during develpment.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker compose exec web bin/rails c

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# script/shutdown: Tells Docker to run docker compose to stop containers
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker compose down

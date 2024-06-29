@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# script/setup: Tells Docker to setup the project by configuring YAML config files
+# & getting and building Docker images.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+echo "==> Getting/Building Docker images"
+docker compose build
+docker compose pull
+
+docker compose run --rm web script/_setup "$(whoami)"
+
+echo "==> All done!"
