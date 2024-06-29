@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# script/server: Tells Docker to run docker compose to start containers up and
+# display running logs.
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+docker compose up -d
+docker compose logs -f web
