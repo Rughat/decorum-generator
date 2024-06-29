@@ -30,7 +30,7 @@ WORKDIR /app
 
 ENV MAKE="make --jobs 8"
 
-COPY Gemfile ./
+COPY Gemfile Gemfile.lock ./
 
 RUN bundle install
 
