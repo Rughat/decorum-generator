@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-Rspec.describe "Starting a new game" do
+RSpec.describe "creating a new game" do
   context "on non-mobile" do
-    it "can start a game" do
+    it "can create a new game" do
       visit root_path
       click "New Game"
 
@@ -26,6 +26,8 @@ Rspec.describe "Starting a new game" do
       # expect(current_path).to eq player_rules_path
 
       expect(page).to have_content "Requirements"
+
+      # expect(page).to have_content some list of requirements for player 1
     end
   end
 end
