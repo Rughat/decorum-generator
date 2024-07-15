@@ -1,3 +1,5 @@
+require 'capybara/rspec'
+
 # # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

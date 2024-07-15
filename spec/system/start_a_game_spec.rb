@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'application_system_test_case'
 
 RSpec.describe "creating a new game" do
   context "on non-mobile" do
