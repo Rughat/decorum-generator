@@ -1,0 +1,6 @@
+<h1>Create a new game</h1>
+<%= form_for :game, url: games_path do |f| %>
+  <p>
+    <%= f.button "Start a 2 player game", type: :submit, name: "player_count", value: "2" %>
+  </p>
+<% end %>
