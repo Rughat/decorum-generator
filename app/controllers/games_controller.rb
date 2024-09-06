@@ -2,7 +2,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.save
-    redirect_to @game
+    redirect_to game_url(@game)
   end
 
   def show
@@ -10,7 +10,7 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new()
+    @game = Game.new
   end
 
   def index
@@ -19,6 +19,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(:player_count, :id, :authenticity_token)
+    params.fetch(:game, {})
   end
 end
