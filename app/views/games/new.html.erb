@@ -1,6 +1,11 @@
 <h1>Create a new game</h1>
-<%= form_for :game, url: games_path do |f| %>
+
+<h2><%= @game.id %></h2>
+
+<%= button_to "Start a 2 player game", games_path, method: :post, params: { player_count: 2 } %>
+
+<%= form_with scope: @game, url: games_path do |f| %>
   <p>
-    <%= f.button "Start a 2 player game", type: :submit, name: "player_count", value: "2" %>
+    <%= f.submit text: "Start a 2 player game", name: "player_count", value: "2" %>
   </p>
 <% end %>

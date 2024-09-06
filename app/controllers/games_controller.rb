@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.new()
   end
 
   def index
@@ -18,6 +19,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(:player_count, :id)
+    params.permit(:player_count, :id, :authenticity_token)
   end
 end
