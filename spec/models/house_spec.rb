@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe House, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe ".create" do
+    it "creates a random house" do
+    end
+  end
 end
