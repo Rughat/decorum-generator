@@ -11,8 +11,28 @@ RSpec.describe "creating a new game" do
       click_on "Start a 2 player game"
 
       # expect page to be on the choose a player page
+      expect(page).to have_content "Starting Layout"
+      within "#starting-layout" do
+        within "#room-layout-bathroom" do
+          furnishings = all(".furnishing")
+          expect(furnishings).to all(match(/A [red|blue|green|yellow] [antique|modern|retro|unusual] [curio|lamp|wall hanging]/)).and have_at_most(3).items
+        end
 
-      expect(page).to have_content "Starting house setup"
+        within "#room-layout-bedroom" do
+          furnishings = all(".furnishing")
+          expect(furnishings).to all(match(/A [red|blue|green|yellow] [antique|modern|retro|unusual] [curio|lamp|wall hanging]/)).and have_at_most(3).items
+        end
+
+        within "#room-layout-living-room" do
+          furnishings = all(".furnishing")
+          expect(furnishings).to all(match(/A [red|blue|green|yellow] [antique|modern|retro|unusual] [curio|lamp|wall hanging]/)).and have_at_most(3).items
+        end
+
+        within "#room-layout-kitchen" do
+          furnishings = all(".furnishing")
+          expect(furnishings).to all(match(/A [red|blue|green|yellow] [antique|modern|retro|unusual] [curio|lamp|wall hanging]/)).and have_at_most(3).items
+        end
+      end
 
       expect(page).to have_button "Show requirements for player 1"
       expect(page).to have_button "Show requirements for player 2"
