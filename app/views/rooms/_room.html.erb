@@ -1,0 +1,12 @@
+<div id="<%= room.room_html_id%>">
+  <p>
+    <p><%= room.name %></p>
+    <p>Wall color: <%= room.color %></p>
+    <ul>
+      <% room.tokens.each do |token| %>
+        <li><%= token.long_description %></li>
+      <% end %>
+    <ul>
+  </p>
+
+</div>
