@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_12_033930) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_15_131737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,4 +27,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_033930) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.bigint "house_id", null: false
+    t.string "room_type"
+    t.string "side"
+    t.string "floor"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_rooms_on_house_id"
+  end
+
+  create_table "tokens", force: :cascade do |t|
+    t.string "type"
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "room_id", null: false
+    t.index ["room_id"], name: "index_tokens_on_room_id"
+  end
+
+  add_foreign_key "rooms", "houses"
+  add_foreign_key "tokens", "rooms"
 end
