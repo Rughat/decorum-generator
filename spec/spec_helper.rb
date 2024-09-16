@@ -1,4 +1,5 @@
 require 'capybara/rspec'
+require 'rspec/collection_matchers'
 
 # # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

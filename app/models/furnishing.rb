@@ -1,0 +1,2 @@
+class Furnishing < Token
+end

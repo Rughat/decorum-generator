@@ -1,0 +1,10 @@
+<h1>Starting Layout:</h1>
+<div id="starting-layout">
+  <%= render(partial: "houses/house", locals: { house: @game.starting_layout }) %>
+</div>
+
+<h1>Goal Layout:</h1>
+<div id="goal-layout">
+  <%= render(partial: "houses/house", locals: { house: @game.goal_layout }) %>
+</div>
+
