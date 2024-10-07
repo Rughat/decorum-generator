@@ -15,6 +15,19 @@ class Room < ApplicationRecord
     room
   end
 
+  def count_styles(style)
+    tokens.count { |token| token.style == style.to_s}
+  end
+
+  def count_colors(test_color)
+    tokens.count { |token| token.color == test_color } +
+        (color == test_color ? 1 : 0)
+  end
+
+  def count_furnishings(furnishing)
+    tokens.count { |token| token.class == furnishing }
+  end
+
   def name
     room_type.gsub('_',' ').titleize
   end

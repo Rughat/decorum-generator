@@ -11,4 +11,19 @@ class House < ApplicationRecord
     house.save
     house
   end
+
+  def count_styles(style:, section:)
+    rooms.select { |room| section.rooms.include?(room.room_type) }
+         .sum { |room| room.count_styles(style) }
+  end
+
+  def count_colors(color:, section:)
+    rooms.select { |room| section.rooms.include?(room.room_type) }
+         .sum { |room| room.count_colors(color) }
+  end
+
+  def count_furnishings(furnishing:, section:)
+    rooms.select { |room| section.rooms.include?(room.room_type) }
+         .sum { |room| room.count_furnishings(furnishing) }
+  end
 end

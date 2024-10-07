@@ -1,6 +1,10 @@
 class Lamp < Furnishing
   def self.random
-    [Lamp, EmptyFurnishing].sample.generate
+    [Lamp, Lamp, Lamp, EmptyFurnishing].sample.generate
+  end
+
+  def self.short_name
+    "lamp"
   end
 
   def self.generate
