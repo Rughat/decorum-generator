@@ -7,8 +7,9 @@ RSpec.describe Game, type: :model do
       expect(game.valid?).to be_truthy
       expect(game.starting_layout).to be_a(House)
       expect(game.goal_layout).to be_a(House)
-      expect(game.requirements).to be_a(Array).and have_exactly(2).items
-      expect(game.requirements[0]).to all(be_a(Requirement)).and have_at_least(3).items
+      expect(game.players).to all(be_a(Player)).and have_exactly(2).items
+      expect(game.players.first.requirements).to all(be_a(Requirement)).and have_at_least(3).items
+      expect(game.players.last.requirements).to all(be_a(Requirement)).and have_at_least(3).items
     end
   end
 end
