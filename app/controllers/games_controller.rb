@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def create
-    @game = Game.build(player_count: game_params[:player_count])
+    @game = Game.build(player_count: game_params[:player_count].to_i)
     redirect_to game_url(@game)
   end
 

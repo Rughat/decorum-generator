@@ -8,3 +8,10 @@
   <%= render(partial: "houses/house", locals: { house: @game.goal_layout }) %>
 </div>
 
+<h1>Players: </h1>
+<div id="players-layout">
+  <% @game.players.each_with_index do |player, index| %>
+    <h2>Player <%= index + 1%></h2>
+    <%= render(partial: "players/player", locals: { player: player }) %>
+  <% end %>
+</div>

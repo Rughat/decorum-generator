@@ -2,7 +2,7 @@ class House < ApplicationRecord
   has_one :game
   has_many :rooms
 
-  def self.generate(player_count: 2)
+  def self.generate(player_count: "2")
     house = self.create
     house.rooms.append(Room.generate(room_type: "living_room"))
     house.rooms.append(Room.generate(room_type: "kitchen"))
