@@ -18,6 +18,7 @@ class Section
   end
 
   def self.random_opposable(randomizer: Kernel)
+    self.new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
   end
 
   attr_accessor :index, :opposite_index
