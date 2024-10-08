@@ -54,6 +54,12 @@ RSpec.describe Section do
   it_should_behave_like "a randomly opposable section object", described_class.new(8), "bedroom", ["bedroom"], 8, [7, 9, 10]
   it_should_behave_like "a randomly opposable section object", described_class.new(9), "living room", ["living_room"], 9, [7, 8, 10]
   it_should_behave_like "a randomly opposable section object", described_class.new(10), "kitchen", ["kitchen"], 10, [7, 8, 9]
+
+  it "should only give random opposable values" do
+    randomizer = class_double(Kernel)
+    expect(randomizer).to receive(:rand).with(10).and_return(0)
+    expect(described_class.random_opposable(randomizer: randomizer).name).to eq("top floor")
+  end
 end
 
 
