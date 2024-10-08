@@ -1,3 +1,5 @@
+require "ostruct"
+
 class Section
   SECTION_ARRAY = [
     OpenStruct.new(index: 0, name: "whole house", rooms: ["bedroom","bathroom","kitchen","living_room"], opposite_index: nil),
