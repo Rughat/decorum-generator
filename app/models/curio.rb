@@ -1,6 +1,10 @@
 class Curio < Furnishing
   def self.random
-    [Curio, EmptyFurnishing].sample.generate
+    [Curio, Curio, Curio, EmptyFurnishing].sample.generate
+  end
+
+  def self.short_name
+    "curio"
   end
 
   def self.generate

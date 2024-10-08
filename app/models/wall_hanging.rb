@@ -1,6 +1,10 @@
 class WallHanging < Furnishing
   def self.random
-    [WallHanging, EmptyFurnishing].sample.generate
+    [WallHanging, WallHanging, WallHanging, EmptyFurnishing].sample.generate
+  end
+
+  def self.short_name
+    "wall hanging"
   end
 
   def self.generate

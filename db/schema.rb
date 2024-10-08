@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_15_131737) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_05_200634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_15_131737) do
   create_table "houses", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_players_on_game_id"
+  end
+
+  create_table "requirements", force: :cascade do |t|
+    t.bigint "player_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.string "text"
+    t.index ["player_id"], name: "index_requirements_on_player_id"
   end
 
   create_table "rooms", force: :cascade do |t|
@@ -47,6 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_15_131737) do
     t.index ["room_id"], name: "index_tokens_on_room_id"
   end
 
+  add_foreign_key "players", "games"
+  add_foreign_key "requirements", "players"
   add_foreign_key "rooms", "houses"
   add_foreign_key "tokens", "rooms"
 end
