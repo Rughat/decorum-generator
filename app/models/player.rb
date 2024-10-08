@@ -4,7 +4,7 @@ class Player < ApplicationRecord
 
   def self.generate(goal:)
     player = Player.create
-    3.times do
+    4.times do
       player.requirements.append(Requirement.generate(goal: goal))
     end
     player
