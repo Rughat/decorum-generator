@@ -3,15 +3,18 @@
   <%= render(partial: "houses/house", locals: { house: @game.starting_layout }) %>
 </div>
 
-<h1>Goal Layout:</h1>
-<div id="goal-layout">
-  <%= render(partial: "houses/house", locals: { house: @game.goal_layout }) %>
-</div>
-
 <h1>Players: </h1>
 <div id="players-layout">
   <% @game.players.each_with_index do |player, index| %>
     <h2>Player <%= index + 1%></h2>
     <%= render(partial: "players/player", locals: { player: player }) %>
   <% end %>
+</div>
+
+<h1>Goal Layout:</h1>
+<div data-controller="hiding" id="goal-layout">
+  <button data-hiding-target="button" data-action="hiding#toggle">Show goal layout</button>
+  <div data-hiding-target="hideable" hidden="true">
+    <%= render(partial: "houses/house", locals: { house: @game.goal_layout }) %>
+  </div>
 </div>

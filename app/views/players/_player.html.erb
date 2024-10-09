@@ -1,3 +1,16 @@
-<% player.requirements.each do |requirement| %>
-  <p><%= requirement.text %></p>
-<% end %>
+<div data-controller="hiding">
+  <button data-hiding-target="button" data-action="hiding#toggle" class="button-88">Show requirements</button>
+  <div data-hiding-target="hideable" hidden="true">
+    <ul>
+    <% player.requirements.each do |requirement| %>
+      <div data-controller="hiding">
+        <li>
+          <button data-hiding-target="button" data-action="hiding#toggle" class="button-90 inline">Hide individual requirement</button>
+          <div data-hiding-target="hideable" class="inline">
+            <%= requirement.text %>
+          </div>
+        </li>
+    <% end %>
+    </ul>
+  </div>
+</div>

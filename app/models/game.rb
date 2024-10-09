@@ -7,11 +7,11 @@ class Game < ApplicationRecord
     game = self.new
     game.starting_layout = House.generate(player_count: player_count)
     game.goal_layout = House.generate(player_count: player_count)
-#    player_count.to_i.times do
-#      game.players.append(Player.generate(goal: game.goal_layout))
-#    end
-    game.players.append(Player.generate(goal: game.goal_layout))
-    game.players.append(Player.generate(goal: game.goal_layout))
+    player_count.to_i.times do
+      game.players.append(Player.generate(goal: game.goal_layout))
+    end
+#    game.players.append(Player.generate(goal: game.goal_layout))
+#    game.players.append(Player.generate(goal: game.goal_layout))
     game.save
     game
   end
