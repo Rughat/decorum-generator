@@ -2,7 +2,7 @@ module ComputedRule
   class RelativeCountOfFurnishing < Requirement
     def self.build(house:, furnishings: Furnishing, sections: Section)
       furnishing = furnishings.random
-      section = sections.random_opposable
+      section = sections.random_multiroom_opposable
       count = house.count_furnishings(furnishing: furnishing, section: section)
       opposite_count = house.count_furnishings(furnishing: furnishing, section: section.opposite)
       rule = self.create

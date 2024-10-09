@@ -1,3 +1,5 @@
 <h1>Create a new game</h1>
 
-<%= button_to "Start a 2 player game", games_path, method: :post, params: { player_count: 2 } %>
+<%= button_to "Start a 2 player game", games_path, method: :post, params: { player_count: "2" } %>
+<%= button_to "Start a 3 player game", games_path, method: :post, params: { player_count: "3" } %>
+<%= button_to "Start a 4 player game", games_path, method: :post, params: { player_count: "4" } %>
