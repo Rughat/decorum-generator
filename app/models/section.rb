@@ -1,3 +1,5 @@
+require "ostruct"
+
 class Section
   SECTION_ARRAY = [
     OpenStruct.new(index: 0, name: "whole house", rooms: ["bedroom","bathroom","kitchen","living_room"], opposite_index: nil),
@@ -19,6 +21,10 @@ class Section
 
   def self.random_opposable(randomizer: Kernel)
     self.new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
+  end
+
+  def self.random_multiroom_opposable(randomizer: Kernel)
+    self.new(randomizer.rand(6) + 1)
   end
 
   attr_accessor :index, :opposite_index

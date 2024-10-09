@@ -10,7 +10,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
 
     it "randomly builds a rule from the given house when there are more in the first section" do
       expect(furnishings).to receive(:random).and_return(Lamp)
-      expect(sections).to receive(:random_opposable).and_return(selected_section)
+      expect(sections).to receive(:random_multiroom_opposable).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
       expect(opposite_section).to receive(:name).and_return("bottom floor")
@@ -23,7 +23,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
 
     it "randomly builds a rule from the given house when there are less in the first section" do
       expect(furnishings).to receive(:random).and_return(Lamp)
-      expect(sections).to receive(:random_opposable).and_return(selected_section)
+      expect(sections).to receive(:random_multiroom_opposable).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
       expect(opposite_section).to receive(:name).and_return("bottom floor")
@@ -36,7 +36,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
 
     it "randomly builds a rule from the given house when there are an equal amount in both sections" do
       expect(furnishings).to receive(:random).and_return(Lamp)
-      expect(sections).to receive(:random_opposable).and_return(selected_section)
+      expect(sections).to receive(:random_multiroom_opposable).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
       expect(opposite_section).to receive(:name).and_return("bottom floor")

@@ -18,6 +18,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.fetch(:game, {})
+    params.permit(:player_count)
   end
 end
