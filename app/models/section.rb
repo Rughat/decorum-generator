@@ -23,6 +23,10 @@ class Section
     self.new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
   end
 
+  def self.random_multiroom_opposable(randomizer: Kernel)
+    self.new(randomizer.rand(6) + 1)
+  end
+
   attr_accessor :index, :opposite_index
 
   def initialize(section)

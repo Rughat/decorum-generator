@@ -60,6 +60,12 @@ RSpec.describe Section do
     expect(randomizer).to receive(:rand).with(10).and_return(0)
     expect(described_class.random_opposable(randomizer: randomizer).name).to eq("top floor")
   end
+
+  it "should only give random multiroom opposable values" do
+    randomizer = class_double(Kernel)
+    expect(randomizer).to receive(:rand).with(6).and_return(5)
+    expect(described_class.random_multiroom_opposable(randomizer: randomizer).name).to eq("bathroom & kitchen")
+    expect(randomizer).to receive(:rand).with(6).and_return(0)
+    expect(described_class.random_multiroom_opposable(randomizer: randomizer).name).to eq("top floor")
+  end
 end
-
-
