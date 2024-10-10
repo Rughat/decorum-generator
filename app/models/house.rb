@@ -1,5 +1,5 @@
 class House < ApplicationRecord
-  has_one :game
+  has_one :scenario
   has_many :rooms
 
   def self.generate(player_count: "2")

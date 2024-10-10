@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
-  belongs_to :game
+  belongs_to :scenario
   has_many :requirements
 
   def self.generate(goal:)
