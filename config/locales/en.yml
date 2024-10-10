@@ -31,5 +31,5 @@ en:
   hello: "Hello world"
   helpers:
     label:
-      games:
+      scenarios:
         player_count: "Number of players"
