@@ -1,14 +1,14 @@
 require 'application_system_test_case'
 
-RSpec.describe "creating a new game" do
+RSpec.describe "creating a new scenario" do
   context "on non-mobile" do
-    it "can create a new game" do
+    it "can create a new scenario" do
       visit root_path
-      click_on "New Game"
+      click_on "New Scenario"
 
-      expect(current_path).to eq new_game_path
+      expect(current_path).to eq new_scenario_path
 
-      click_on "Start a 2 player game"
+      click_on "Start a 2 player scenario"
 
       # expect page to be on the choose a player page
       expect(page).to have_content "Starting Layout"
