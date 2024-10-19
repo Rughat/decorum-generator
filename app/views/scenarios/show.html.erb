@@ -6,8 +6,10 @@
 <h1>Players: </h1>
 <div id="players-layout">
   <% @scenario.players.each_with_index do |player, index| %>
+    <div id="player-specific-data-<%= index + 1%>">
     <h2>Player <%= index + 1%></h2>
     <%= render(partial: "players/player", locals: { player: player }) %>
+    </div>
   <% end %>
 </div>
 
