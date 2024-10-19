@@ -1,2 +1,12 @@
 <h1>The Autonomous Decorum-Bot</h1>
 <%= link_to 'New Scenario', new_scenario_path %>
+<table>
+  <tr>
+    <th>Scenario Number</th>
+    <th>Player Count</th>
+    <th>Start</th>
+  </tr>
+  <% @scenarios.each do |scenario| %>
+    <%= render(partial: "scenarios/list", locals: { scenario: scenario }) %>
+  <% end %>
+</table>

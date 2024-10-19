@@ -13,6 +13,7 @@ class ScenariosController < ApplicationController
   end
 
   def index
+    @scenarios = Scenario.all.sort_by(&:id).reverse
   end
 
   private
