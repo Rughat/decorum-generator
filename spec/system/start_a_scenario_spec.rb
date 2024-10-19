@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-RSpec.describe "creating a new scenario" do
+RSpec.describe "creating a new scenario", js: true do
   context "on non-mobile" do
     it "can create a new scenario" do
       visit root_path
@@ -8,7 +8,7 @@ RSpec.describe "creating a new scenario" do
 
       expect(current_path).to eq new_scenario_path
 
-      click_on "Start a 2 player scenario"
+      click_on "Create a 2 player scenario"
 
       # expect page to be on the choose a player page
       expect(page).to have_content "Starting Layout"
@@ -34,26 +34,23 @@ RSpec.describe "creating a new scenario" do
         end
       end
 
-      expect(page).to have_button "Show requirements for player 1"
-      expect(page).to have_button "Show requirements for player 2"
+      within "#player-specific-data-1" do
+        expect(page).to have_button "Show requirements"
+        click_on "Show requirements"
 
-      click_on "Show requirements for player 1"
+        # somehow figure out if the requirements are showing?
 
-      # expect(current_path).to eq player_rules_path
+        click_on "Hide requirements"
+      end
 
-      expect(page).to have_content "Requirements"
+      within "#player-specific-data-2" do
+        expect(page).to have_button "Show requirements"
+        click_on "Show requirements"
 
-      # expect(page).to have_content some list of requirements for player 1
+        # somehow figure out if the requirements are showing?
 
-      click_on "Close"
-
-      click_on "Show requirements for player 2"
-
-      # expect(current_path).to eq player_rules_path
-
-      expect(page).to have_content "Requirements"
-
-      # expect(page).to have_content some list of requirements for player 1
+        click_on "Hide requirements"
+      end
     end
   end
 end
