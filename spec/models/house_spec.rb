@@ -35,7 +35,7 @@ RSpec.describe House, type: :model do
 
   describe "#count_styles" do
     let(:subject) { build(:house) }
-    let(:style) { :modern }
+    let(:style) { "modern" }
     let(:section) { double }
     let(:living_room) { build(:room, room_type: "living_room") }
     let(:bedroom) { build(:room, room_type: "bedroom") }
