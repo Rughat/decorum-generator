@@ -34,9 +34,9 @@ RSpec.describe Room, type: :model do
       subject.tokens.append(Lamp.new(color: "red"))
       subject.tokens.append(Curio.new(color: "red"))
       subject.tokens.append(EmptyFurnishing.new)
-      expect(subject.count_styles(:retro)).to eq(1)
-      expect(subject.count_styles(:unusual)).to eq(1)
-      expect(subject.count_styles(:antique)).to eq(0)
+      expect(subject.count_styles("retro")).to eq(1)
+      expect(subject.count_styles("unusual")).to eq(1)
+      expect(subject.count_styles("antique")).to eq(0)
     end
   end
 
