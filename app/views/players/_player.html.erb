@@ -2,11 +2,11 @@
   <button data-hiding-target="button" data-action="hiding#toggle" class="button-88">Show requirements</button>
   <div data-hiding-target="hideable" hidden="true">
     <ul>
-    <% player.requirements.each do |requirement| %>
+    <% player.requirements.each_with_index do |requirement, index| %>
       <div data-controller="hiding">
         <li>
-          <button data-hiding-target="button" data-action="hiding#toggle" class="button-90 inline">Hide individual requirement</button>
-          <div data-hiding-target="hideable" class="inline">
+          <button data-hiding-target="button" data-action="hiding#toggle" class="button-90 inline">Show requirement <%= index + 1 %></button>
+          <div data-hiding-target="hideable" class="inline" hidden="true">
             <%= requirement.text %>
           </div>
         </li>
