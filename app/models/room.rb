@@ -16,7 +16,7 @@ class Room < ApplicationRecord
   end
 
   def count_styles(style)
-    tokens.count { |token| token.style == style.to_s}
+    tokens.count { |token| token.style == style}
   end
 
   def count_colors(test_color)
