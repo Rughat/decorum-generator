@@ -62,10 +62,10 @@ RSpec.describe Room, type: :model do
       subject.tokens.append(Lamp.new(color: "red"))
       subject.tokens.append(Curio.new(color: "blue"))
       subject.tokens.append(EmptyFurnishing.new)
-      expect(subject.count_furnishings(Lamp)).to eq(1)
-      expect(subject.count_furnishings(Curio)).to eq(1)
-      expect(subject.count_furnishings(EmptyFurnishing)).to eq(1)
-      expect(subject.count_furnishings(WallHanging)).to eq(0)
+      expect(subject.count_furnishings("lamp")).to eq(1)
+      expect(subject.count_furnishings("curio")).to eq(1)
+      expect(subject.count_furnishings("empty space")).to eq(1)
+      expect(subject.count_furnishings("wall hanging")).to eq(0)
     end
   end
 end

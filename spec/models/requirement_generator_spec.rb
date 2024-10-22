@@ -10,7 +10,7 @@ RSpec.describe RequirementGenerator do
 
     it "creates a list of unique requirement and feature combos" do
       expect(subject.requirement_list.count).to eq(16)
-      expect(subject.requirement_list.map(&:feature)).to all(be_a(Symbol))
+      expect(subject.requirement_list.map(&:feature)).to all(be_a(String))
       expect(subject.requirement_list.map(&:rule).map(&:ancestors)).to all(include(Requirement))
     end
   end
