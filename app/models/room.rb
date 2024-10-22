@@ -15,8 +15,8 @@ class Room < ApplicationRecord
     room
   end
 
-  def count_styles(style)
-    tokens.count { |token| token.style == style}
+  def count_styles(test_style)
+    tokens.count { |token| token.style == test_style}
   end
 
   def count_colors(test_color)
@@ -24,8 +24,8 @@ class Room < ApplicationRecord
         (color == test_color ? 1 : 0)
   end
 
-  def count_furnishings(furnishing)
-    tokens.count { |token| token.class == furnishing }
+  def count_furnishings(test_furnishing)
+    tokens.count { |token| token.short_name == test_furnishing }
   end
 
   def name
