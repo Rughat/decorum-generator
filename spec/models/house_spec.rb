@@ -59,7 +59,7 @@ RSpec.describe House, type: :model do
 
   describe "#count_furnishings" do
     let(:subject) { build(:house) }
-    let(:furnishing) { Lamp }
+    let(:furnishing) { "lamp" }
     let(:section) { double }
     let(:living_room) { build(:room, room_type: "living_room") }
     let(:bedroom) { build(:room, room_type: "bedroom") }
