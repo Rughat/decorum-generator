@@ -14,7 +14,7 @@ class RequirementGenerator
     self.requirement_list = []
     self.requirement_count = requirement_count
     (requirement_count * players).times do
-      self.requirement_list << SpecificRequirement.new(rule: rule_source.all.sample, feature: :test)
+      self.requirement_list << SpecificRequirement.new(rule: rule_source.all.sample, feature: "test")
     end
   end
 
