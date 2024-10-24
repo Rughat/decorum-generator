@@ -46,5 +46,17 @@ RSpec.describe ComputedRule::RelativeCountOfColor do
       expect(subject).to be_a(described_class)
       expect(subject.text).to eq("The top floor and the bottom floor must contain an equal amount of red features (as objects and/or wall colors)")
     end
+
+    it "randomly builds a rule from the given house when there are an equal amount in both sections with a given feature" do
+      expect(sections).to receive(:random_opposable).and_return(selected_section)
+      expect(selected_section).to receive(:name).and_return("top floor")
+      expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
+      expect(opposite_section).to receive(:name).and_return("bottom floor")
+      expect(house).to receive(:count_colors).with(color: "red", section: selected_section).and_return(3)
+      expect(house).to receive(:count_colors).with(color: "red", section: opposite_section).and_return(3)
+      subject = described_class.build(house: house, feature: "red", sections: sections)
+      expect(subject).to be_a(described_class)
+      expect(subject.text).to eq("The top floor and the bottom floor must contain an equal amount of red features (as objects and/or wall colors)")
+    end
   end
 end

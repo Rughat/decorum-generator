@@ -24,5 +24,4 @@ class RequirementGenerator
       player.requirements.append(req_template.rule.build(house: goal))
     end
   end
-
 end
