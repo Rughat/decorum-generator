@@ -1,11 +1,10 @@
 module ComputedRule
   class ExactCountOfStyle < Requirement
-    def self.build(house:, styles: Style, sections: Section)
-      style = styles.random
+    def self.build(house:, styles: Style, sections: Section, feature: styles.random)
       section = sections.random
-      count = house.count_styles(style: style, section: section)
+      count = house.count_styles(style: feature, section: section)
       rule = self.create
-      rule.text = "The #{section.name} must contain exactly #{count} #{style} #{"object".pluralize(count)}"
+      rule.text = "The #{section.name} must contain exactly #{count} #{feature} #{"object".pluralize(count)}"
       rule.save
       rule
     end

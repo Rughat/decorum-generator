@@ -16,5 +16,14 @@ RSpec.describe ComputedRule::ExactCountOfStyle do
       expect(subject).to be_a(described_class)
       expect(subject.text).to eq("The top floor must contain exactly 3 antique objects")
     end
+
+    it "randomly builds a rule from the given house with a given feature" do
+      expect(sections).to receive(:random).and_return(selected_section)
+      expect(selected_section).to receive(:name).and_return("top floor")
+      expect(house).to receive(:count_styles).with(style: "antique", section: selected_section).and_return(3)
+      subject = described_class.build(house: house, feature: "antique", sections: sections)
+      expect(subject).to be_a(described_class)
+      expect(subject.text).to eq("The top floor must contain exactly 3 antique objects")
+    end
   end
 end
