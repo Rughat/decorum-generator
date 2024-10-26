@@ -20,12 +20,13 @@ RSpec.describe RequirementGenerator do
     let(:goal) { instance_double(House) }
     let(:rule_source) { class_double(ComputedRule) }
     let(:rule_source_collection) { [computed_rule] }
-    let(:computed_rule) { instance_double(ComputedRule) }
+    let(:computed_rule) { class_double(ComputedRule::ExactCountOfColor) }
     let(:finished_rule) { instance_double(Rule) }
     let(:player_reqs) { [] }
 
     it "generates requirements for that player from the unique requirements list" do
       allow(rule_source).to receive(:all).exactly(16).times.and_return(rule_source_collection)
+      allow(computed_rule).to receive(:random_feature).exactly(16).times.and_return("sample feature")
       subject = described_class.new(players: 4, requirement_count: 4, rule_source: rule_source)
       expect(computed_rule).to receive(:build).with(house: goal).exactly(4).times.and_return(finished_rule)
       expect(player).to receive(:requirements).exactly(4).times.and_return(player_reqs)
