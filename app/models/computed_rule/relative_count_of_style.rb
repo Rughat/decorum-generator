@@ -1,5 +1,9 @@
 module ComputedRule
   class RelativeCountOfStyle < Requirement
+    def self.random_feature
+      Style.random
+    end
+
     def self.build(house:, styles: Style, sections: Section, feature: styles.random)
       section = sections.random_opposable
       count = house.count_styles(style: feature, section: section)

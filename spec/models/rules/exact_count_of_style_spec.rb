@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ComputedRule::ExactCountOfStyle do
+  describe ".random_feature" do
+    it "calls and returns a random feature" do
+      expect(Style).to receive(:random).and_return("modern")
+      expect(described_class.random_feature).to eq("modern")
+    end
+  end
+
   describe ".build" do
     let(:house) { instance_double(House) }
     let(:styles) { class_double(Style) }

@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ComputedRule::RelativeCountOfColor do
+  describe ".random_feature" do
+    it "calls and returns a random feature" do
+      expect(Colors).to receive(:random).and_return("yellow")
+      expect(described_class.random_feature).to eq("yellow")
+    end
+  end
+
   describe ".build" do
     let(:house) { instance_double(House) }
     let(:colors) { class_double(Colors) }

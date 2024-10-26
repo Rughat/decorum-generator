@@ -1,5 +1,9 @@
 module ComputedRule
   class RelativeCountOfFurnishing < Requirement
+    def self.random_feature
+      Furnishing.random.short_name
+    end
+
     def self.build(house:, furnishings: Furnishing, sections: Section, feature: furnishings.random.short_name)
       furnishing = feature
       section = sections.random_multiroom_opposable
