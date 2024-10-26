@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ComputedRule::ExactCountOfFurnishing do
+  describe ".random_feature" do
+    it "calls and returns a random feature" do
+      expect(Furnishing).to receive(:random).and_return(WallHanging)
+      expect(described_class.random_feature).to eq("wall hanging")
+    end
+  end
+
   describe ".build" do
     let(:house) { instance_double(House) }
     let(:furnishings) { class_double(Furnishing) }

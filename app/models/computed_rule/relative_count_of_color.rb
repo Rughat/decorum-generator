@@ -1,5 +1,9 @@
 module ComputedRule
   class RelativeCountOfColor < Requirement
+    def self.random_feature
+      Colors.random
+    end
+
     def self.build(house:, colors: Colors, sections: Section, feature: colors.random)
       section = sections.random_opposable
       count = house.count_colors(color: feature, section: section)
