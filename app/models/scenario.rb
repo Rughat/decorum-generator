@@ -9,7 +9,6 @@ class Scenario < ApplicationRecord
     player_cnt = player_count.to_i
     scenario.starting_layout = House.generate(player_count: player_count)
     scenario.goal_layout = House.generate(player_count: player_count)
-    requirements = Requirement.generate_group(rule_count: req_count * 4, goal: scenario.goal_layout)
     requirement_generator = RequirementGenerator.new(players: player_cnt, requirement_count: req_count)
     player_count.to_i.times do
       player = Player.generate()
