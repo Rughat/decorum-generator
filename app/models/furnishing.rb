@@ -1,6 +1,6 @@
 class Furnishing < Token
   def self.random
-    self.subclasses.sample
+    subclasses.sample
   end
 
   def short_name
