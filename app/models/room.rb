@@ -16,12 +16,12 @@ class Room < ApplicationRecord
   end
 
   def count_styles(test_style)
-    tokens.count { |token| token.style == test_style}
+    tokens.count { |token| token.style == test_style }
   end
 
   def count_colors(test_color)
     tokens.count { |token| token.color == test_color } +
-        (color == test_color ? 1 : 0)
+      ((color == test_color) ? 1 : 0)
   end
 
   def count_furnishings(test_furnishing)
@@ -29,11 +29,11 @@ class Room < ApplicationRecord
   end
 
   def name
-    room_type.gsub('_',' ').titleize
+    room_type.tr("_", " ").titleize
   end
 
   def room_html_id
-    "room-layout-#{room_type.gsub('_','-')}"
+    "room-layout-#{room_type.tr("_", "-")}"
   end
 
   def side

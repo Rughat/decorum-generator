@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ComputedRule::RelativeCountOfStyle do
   describe ".random_feature" do

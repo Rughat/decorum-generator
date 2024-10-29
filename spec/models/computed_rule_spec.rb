@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ComputedRule, type: :model do
   describe "#all" do
@@ -7,4 +7,3 @@ RSpec.describe ComputedRule, type: :model do
     end
   end
 end
-
