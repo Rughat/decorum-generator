@@ -2,8 +2,8 @@ require "ostruct"
 
 class Section
   SECTION_ARRAY = [
-    OpenStruct.new(index: 0, name: "whole house", rooms: ["bedroom","bathroom","kitchen","living_room"], opposite_index: nil),
-    OpenStruct.new(index: 1, name: "top floor", rooms: ["bedroom","bathroom"], opposite_index: 2),
+    OpenStruct.new(index: 0, name: "whole house", rooms: ["bedroom", "bathroom", "kitchen", "living_room"], opposite_index: nil),
+    OpenStruct.new(index: 1, name: "top floor", rooms: ["bedroom", "bathroom"], opposite_index: 2),
     OpenStruct.new(index: 2, name: "bottom floor", rooms: ["living_room", "kitchen"], opposite_index: 1),
     OpenStruct.new(index: 3, name: "right side", rooms: ["bedroom", "kitchen"], opposite_index: 4),
     OpenStruct.new(index: 4, name: "left side", rooms: ["living_room", "bathroom"], opposite_index: 3),
@@ -16,25 +16,25 @@ class Section
   ]
 
   def self.random(randomizer: Kernel)
-    self.new(randomizer.rand(SECTION_ARRAY.length))
+    new(randomizer.rand(SECTION_ARRAY.length))
   end
 
   def self.random_opposable(randomizer: Kernel)
-    self.new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
+    new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
   end
 
   def self.random_multiroom_opposable(randomizer: Kernel)
-    self.new(randomizer.rand(6) + 1)
+    new(randomizer.rand(6) + 1)
   end
 
   attr_accessor :index, :opposite_index
 
   def initialize(section)
     self.index = section
-    if SECTION_ARRAY[index].opposite_indexes
-      self.opposite_index = SECTION_ARRAY[index].opposite_indexes.sample
+    self.opposite_index = if SECTION_ARRAY[index].opposite_indexes
+      SECTION_ARRAY[index].opposite_indexes.sample
     else
-      self.opposite_index = SECTION_ARRAY[index].opposite_index
+      SECTION_ARRAY[index].opposite_index
     end
   end
 

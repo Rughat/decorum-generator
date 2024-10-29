@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe RequirementGenerator do
   describe "#initialize" do
@@ -31,28 +31,29 @@ RSpec.describe RequirementGenerator do
 
     let(:order_of_rule_results) {
       [
-         OpenStruct.new( rule: first_rule,
-                       feature: "red",
-                       result: first_finished_rule ),
-         OpenStruct.new( rule: first_rule,
-                        feature: "red",
-                        result: nil ),
-         OpenStruct.new( rule: first_rule,
-                        feature: "blue",
-                        result: second_finished_rule ),
-         OpenStruct.new( rule: second_rule,
-                        feature: "empty space",
-                        result: third_finished_rule ),
-         OpenStruct.new( rule: first_rule,
-                        feature: "blue",
-                        result: nil ),
-         OpenStruct.new( rule: second_rule,
-                        feature: "empty space",
-                        result: nil ),
-         OpenStruct.new( rule: third_rule,
-                        feature: "modern",
-                        result: fourth_finished_rule )
-      ] }
+        OpenStruct.new(rule: first_rule,
+          feature: "red",
+          result: first_finished_rule),
+        OpenStruct.new(rule: first_rule,
+          feature: "red",
+          result: nil),
+        OpenStruct.new(rule: first_rule,
+          feature: "blue",
+          result: second_finished_rule),
+        OpenStruct.new(rule: second_rule,
+          feature: "empty space",
+          result: third_finished_rule),
+        OpenStruct.new(rule: first_rule,
+          feature: "blue",
+          result: nil),
+        OpenStruct.new(rule: second_rule,
+          feature: "empty space",
+          result: nil),
+        OpenStruct.new(rule: third_rule,
+          feature: "modern",
+          result: fourth_finished_rule)
+      ]
+    }
 
     let(:uniq_rules) { order_of_rule_results.map(&:rule).uniq }
     let(:valid_rules) { order_of_rule_results.select { |call| call.result } }
@@ -63,11 +64,10 @@ RSpec.describe RequirementGenerator do
     let(:second_player_reqs) { [] }
 
     it "generates requirements for that player from the unique requirements list" do
-
       expect(rule_source).to receive(:all).exactly(7).times.and_return(*random_sample_arrays)
 
       uniq_rules.each do |rule|
-        attempts_to_use_rule = order_of_rule_results.select { |call| call.rule == rule}
+        attempts_to_use_rule = order_of_rule_results.select { |call| call.rule == rule }
 
         expect(rule).to receive(:random_feature).exactly(attempts_to_use_rule.count).times.and_return(*attempts_to_use_rule.map(&:feature))
       end

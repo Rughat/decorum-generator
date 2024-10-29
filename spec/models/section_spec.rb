@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.shared_examples "a section object" do |subject, name, rooms, index|
   let(:randomizer) { class_double(Kernel) }
@@ -7,7 +7,7 @@ RSpec.shared_examples "a section object" do |subject, name, rooms, index|
     expect(subject.name).to eq(name)
   end
 
-  it "should include the rooms #{rooms.join(', ')}" do
+  it "should include the rooms #{rooms.join(", ")}" do
     expect(subject.rooms).to match_array(rooms)
   end
 
