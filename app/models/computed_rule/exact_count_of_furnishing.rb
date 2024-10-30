@@ -4,7 +4,7 @@ module ComputedRule
       Furnishing.random.short_name
     end
 
-    def self.build(house:, furnishings: Furnishing, sections: Section, feature: furnishings.random.short_name)
+    def self.build(house:, sections: Section, feature:)
       section = sections.random
       count = house.count_furnishings(furnishing: feature, section: section)
       rule = create
