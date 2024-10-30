@@ -4,7 +4,7 @@ module ComputedRule
       Style.random
     end
 
-    def self.build(house:, styles: Style, sections: Section, feature: styles.random)
+    def self.build(house:, sections: Section, feature:)
       section = sections.random_opposable
       count = house.count_styles(style: feature, section: section)
       opposite_count = house.count_styles(style: feature, section: section.opposite)

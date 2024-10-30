@@ -4,7 +4,7 @@ module ComputedRule
       Colors.random
     end
 
-    def self.build(house:, colors: Colors, sections: Section, feature: colors.random)
+    def self.build(house:, sections: Section, feature:)
       section = sections.random_opposable
       count = house.count_colors(color: feature, section: section)
       opposite_count = house.count_colors(color: feature, section: section.opposite)
