@@ -80,4 +80,30 @@ RSpec.describe House, type: :model do
       expect(subject.count_furnishings(furnishing: furnishing, section: section)).to eq(1)
     end
   end
+
+  describe "#count_duplicate_furnishings" do
+    let(:subject) { build(:house) }
+    let(:living_room) { build(:room, room_type: "living_room") }
+    let(:bedroom) { build(:room, room_type: "bedroom") }
+    let(:kitchen) { build(:room, room_type: "kitchen") }
+    let(:bathroom) { build(:room, room_type: "bathroom") }
+
+    let(:living_room_tokens) { [Lamp.new(color: "red"), EmptyFurnishing.new, EmptyFurnishing.new] }
+    let(:bedroom_tokens) { [Curio.new(color: "blue"), Lamp.new(color: "red"), WallHanging.new(color: "green")] }
+    let(:kitchen_tokens) { [EmptyFurnishing.new, EmptyFurnishing.new, EmptyFurnishing.new] }
+    let(:bathroom_tokens) { [Curio.new(color: "blue"), Lamp.new(color: "yellow"), WallHanging.new(color: "blue")] }
+
+    it "returns the expected number of furnishings" do
+      allow(bedroom).to receive(:tokens).and_return(bedroom_tokens)
+      allow(bathroom).to receive(:tokens).and_return(bathroom_tokens)
+      allow(living_room).to receive(:tokens).and_return(living_room_tokens)
+      allow(kitchen).to receive(:tokens).and_return(kitchen_tokens)
+      subject.rooms.append(living_room)
+      subject.rooms.append(bedroom)
+      subject.rooms.append(bathroom)
+      subject.rooms.append(kitchen)
+
+      expect(subject.count_duplicate_furnishing).to eq(2)
+    end
+  end
 end
