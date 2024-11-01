@@ -8,7 +8,10 @@ RSpec.describe "creating a new scenario", js: true do
 
       expect(current_path).to eq new_scenario_path
 
-      click_on "Create a 2 player scenario"
+      select "4", from: "Requirements per player"
+
+      select "2", from: "Number of players"
+      click_on "Create scenario"
 
       # expect page to be on the choose a player page
       expect(page).to have_content "Starting Layout"
