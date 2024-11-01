@@ -47,7 +47,7 @@ RSpec.describe ComputedRule::RelativeCountOfStyle do
       expect(house).to receive(:count_styles).with(style: "antique", section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: "antique", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor and the bottom floor must contain an equal amount of antique objects")
+      expect(subject.text).to eq("The top floor must contain an equal amount of antique objects as the bottom floor")
     end
   end
 end
