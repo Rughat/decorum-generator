@@ -27,6 +27,10 @@ class Section
     new(randomizer.rand(6) + 1)
   end
 
+  def self.random_single(randomizer: Kernel)
+    new(randomizer.rand(4) + 7)
+  end
+
   attr_accessor :index, :opposite_index
 
   def initialize(section)

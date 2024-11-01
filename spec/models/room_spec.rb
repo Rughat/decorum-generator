@@ -40,6 +40,17 @@ RSpec.describe Room, type: :model do
     end
   end
 
+  describe "#count_different_styles" do
+    let(:subject) { described_class.new }
+
+    it "knows how to count the different styles of the room" do
+      subject.tokens.append(Lamp.new(color: "red"))
+      subject.tokens.append(Curio.new(color: "red"))
+      subject.tokens.append(EmptyFurnishing.new)
+      expect(subject.count_different_styles).to eq(2)
+    end
+  end
+
   describe "#count_colors" do
     let(:subject) { described_class.new }
 
