@@ -7,7 +7,7 @@ class Room < ApplicationRecord
 
   def self.generate(room_type:)
     room = Room.create(room_type: room_type)
-    room.color = Colors.random
+    room.color = Color.random
     room.tokens.append(Lamp.random)
     room.tokens.append(Curio.random)
     room.tokens.append(WallHanging.random)
@@ -20,8 +20,8 @@ class Room < ApplicationRecord
   end
 
   def count_colors(test_color)
-    tokens.count { |token| token.color == test_color } +
-      ((color == test_color) ? 1 : 0)
+    tokens.count { |token| test_color.equal?(token.color_obj) } +
+      (test_color.equal?(color) ? 1 : 0)
   end
 
   def count_furnishings(test_furnishing)

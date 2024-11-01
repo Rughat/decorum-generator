@@ -10,7 +10,6 @@ RSpec.describe RequirementGenerator do
 
     it "creates a list of unique requirement and feature combos" do
       expect(subject.requirement_list.count).to eq(16)
-      expect(subject.requirement_list.map(&:feature)).to all(be_a(String))
       expect(subject.requirement_list.map(&:rule).map(&:ancestors)).to all(include(Requirement))
     end
   end
@@ -32,19 +31,19 @@ RSpec.describe RequirementGenerator do
     let(:order_of_rule_results) {
       [
         OpenStruct.new(rule: first_rule,
-          feature: "red",
+          feature: Color.new("red"),
           result: first_finished_rule),
         OpenStruct.new(rule: first_rule,
-          feature: "red",
+          feature: Color.new("red"),
           result: nil),
         OpenStruct.new(rule: first_rule,
-          feature: "blue",
+          feature: Color.new("blue"),
           result: second_finished_rule),
         OpenStruct.new(rule: second_rule,
           feature: "empty space",
           result: third_finished_rule),
         OpenStruct.new(rule: first_rule,
-          feature: "blue",
+          feature: Color.new("blue"),
           result: nil),
         OpenStruct.new(rule: second_rule,
           feature: "empty space",
