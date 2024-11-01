@@ -9,13 +9,13 @@ class Lamp < Furnishing
 
   def self.generate
     lamp = Lamp.new
-    lamp.color = Colors.random
+    lamp.color = Color.random
     lamp.save
     lamp
   end
 
   def style
-    case color
+    case color_obj.to_s
     when "blue" then "modern"
     when "yellow" then "antique"
     when "red" then "retro"
@@ -24,6 +24,10 @@ class Lamp < Furnishing
   end
 
   def long_description
-    "A #{color} #{style} lamp"
+    "A #{color_obj} #{style} lamp"
+  end
+
+  def color_obj
+    @color ||= Color.new(color)
   end
 end
