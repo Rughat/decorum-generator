@@ -12,6 +12,10 @@ class House < ApplicationRecord
     house
   end
 
+  def get_room(room_type)
+    rooms.find { |r| r.room_type == room_type }
+  end
+
   def count_styles(style:, section:)
     rooms.select { |room| section.rooms.include?(room.room_type) }
       .sum { |room| room.count_styles(style) }
