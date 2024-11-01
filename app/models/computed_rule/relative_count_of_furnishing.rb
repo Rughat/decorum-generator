@@ -10,7 +10,7 @@ module ComputedRule
       opposite_count = house.count_furnishings(furnishing: feature, section: section.opposite)
       rule = create
       rule.text = if count == opposite_count
-        "The #{section.name} and the #{section.opposite.name} must contain an equal amount of #{feature.pluralize}"
+        "The #{section.name} must contain an equal amount of #{feature.pluralize} as the #{section.opposite.name}"
       else
         "The #{section.name} must contain #{(count < opposite_count) ? "less" : "more"} #{feature.pluralize} than the #{section.opposite.name}"
       end
