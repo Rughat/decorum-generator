@@ -1,6 +1,6 @@
 class ScenariosController < ApplicationController
   def create
-    @scenario = Scenario.build(player_count: scenario_params[:player_count].to_i)
+    @scenario = Scenario.build(player_count: params[:player_count].to_i, requirement_count: params[:requirement_count].to_i)
     redirect_to scenario_url(@scenario)
   end
 
@@ -19,6 +19,6 @@ class ScenariosController < ApplicationController
   private
 
   def scenario_params
-    params.permit(:player_count)
+    params.permit(:player_count, :requirement_count)
   end
 end
