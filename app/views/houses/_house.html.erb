@@ -1,3 +1,10 @@
-<% house.rooms.each do |room| %>
-  <%= render(partial: "rooms/room", locals: { room: room } ) %>
-<% end %>
+<table>
+  <tr>
+    <td><%= render(partial: "rooms/room", locals: { room: house.get_room("bathroom") }) %></td>
+    <td><%= render(partial: "rooms/room", locals: { room: house.get_room("bedroom") }) %></td>
+  </tr>
+  <tr>
+    <td><%= render(partial: "rooms/room", locals: { room: house.get_room("living_room") }) %></td>
+    <td><%= render(partial: "rooms/room", locals: { room: house.get_room("kitchen") }) %></td>
+  </tr>
+</table>
