@@ -19,6 +19,10 @@ class Room < ApplicationRecord
     tokens.count { |token| token.style == test_style }
   end
 
+  def count_different_styles
+    tokens.reject {|t| t.class == EmptyFurnishing }.map(&:style).uniq.count
+  end
+
   def count_colors(test_color)
     tokens.count { |token| test_color.equal?(token.color_obj) } +
       (test_color.equal?(color) ? 1 : 0)
@@ -29,7 +33,11 @@ class Room < ApplicationRecord
   end
 
   def name
-    room_type.tr("_", " ").titleize
+    lower_name.tr("_", " ").titleize
+  end
+
+  def lower_name
+    room_type.tr("_", " ")
   end
 
   def room_html_id
