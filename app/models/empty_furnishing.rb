@@ -11,6 +11,10 @@ class EmptyFurnishing < Furnishing
     "An empty spot"
   end
 
+  def color_obj
+    nil
+  end
+
   def style
     nil
   end
