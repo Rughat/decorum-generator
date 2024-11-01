@@ -9,13 +9,13 @@ class Curio < Furnishing
 
   def self.generate
     curio = Curio.new
-    curio.color = Colors.random
+    curio.color = Color.random
     curio.save
     curio
   end
 
   def style
-    case color
+    case color_obj.to_s
     when "green" then "modern"
     when "blue" then "antique"
     when "yellow" then "retro"
@@ -24,6 +24,10 @@ class Curio < Furnishing
   end
 
   def long_description
-    "A #{color} #{style} curio"
+    "A #{color_obj} #{style} curio"
+  end
+
+  def color_obj
+    @color ||= Color.new(color)
   end
 end

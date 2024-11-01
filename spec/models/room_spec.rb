@@ -6,7 +6,7 @@ RSpec.describe Room, type: :model do
     expect(room.name).to eq("Bedroom")
     expect(room.side).to eq("right")
     expect(room.floor).to eq("top")
-    expect(room.color).to be_in(Colors::ALL)
+    expect(room.color).to be_in(Color::ALL)
     expect(room.tokens).to all(be_a(Furnishing)).and have_exactly(3).items
   end
 
@@ -48,9 +48,9 @@ RSpec.describe Room, type: :model do
       subject.tokens.append(Lamp.new(color: "red"))
       subject.tokens.append(Curio.new(color: "blue"))
       subject.tokens.append(EmptyFurnishing.new)
-      expect(subject.count_colors("red")).to eq(1)
-      expect(subject.count_colors("blue")).to eq(2)
-      expect(subject.count_colors("green")).to eq(0)
+      expect(subject.count_colors(Color.new("red"))).to eq(1)
+      expect(subject.count_colors(Color.new("blue"))).to eq(2)
+      expect(subject.count_colors(Color.new("green"))).to eq(0)
     end
   end
 
