@@ -48,7 +48,7 @@ RSpec.describe ComputedRule::RelativeCountOfColor do
       expect(house).to receive(:count_colors).with(color: feature, section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor and the bottom floor must contain an equal amount of red features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain an equal amount of red features (as objects and/or wall colors) as the bottom floor")
     end
   end
 end
