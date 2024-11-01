@@ -30,4 +30,16 @@ class House < ApplicationRecord
     rooms.select { |room| section.rooms.include?(room.room_type) }
       .sum { |room| room.count_furnishings(furnishing) }
   end
+
+  def count_duplicate_furnishing
+    rooms
+      .map(&:tokens)
+      .flatten
+      .reject {|token| token.class == EmptyFurnishing }
+      .map(&:long_description)
+      .tally
+      .values
+      .reject {|value| value < 2 }
+      .count
+  end
 end
