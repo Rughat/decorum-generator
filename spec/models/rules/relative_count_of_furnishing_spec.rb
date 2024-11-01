@@ -47,7 +47,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: "lamp", section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: "lamp", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor and the bottom floor must contain an equal amount of lamps")
+      expect(subject.text).to eq("The top floor must contain an equal amount of lamps as the bottom floor")
     end
   end
 end
