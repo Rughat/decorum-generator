@@ -39,6 +39,7 @@ services:
       DB_USERNAME: my_user
       DB_PASSWORD: a123
       SELENIUM_DRIVER_URL: "http://selenium:4444/wd/hub"
+    env_file: ".env"
     ports:
       - 3000:3000
       - 3001:3001
