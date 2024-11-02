@@ -43,7 +43,7 @@ RSpec.describe ComputedRule::StyleCount do
         expect(house).to receive(:get_room).with(room_name).and_return(room)
         expect(room).to receive(:lower_name).and_return(room_name)
         expect(room).to receive(:count_different_styles).and_return(count)
-        expect(subject.text).to eq("The kitchen must have 2 different styles of objects")
+        expect(subject.text).to eq("The kitchen must have two different styles of objects")
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe ComputedRule::StyleCount do
         expect(house).to receive(:get_room).with(room_name).and_return(room)
         expect(room).to receive(:lower_name).and_return(room_name)
         expect(room).to receive(:count_different_styles).and_return(count)
-        expect(subject.text).to eq("The kitchen must have all three styles of objects")
+        expect(subject.text).to eq("The kitchen must have three different styles of objects")
       end
     end
   end
