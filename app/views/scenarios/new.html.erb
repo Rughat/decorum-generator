@@ -7,5 +7,6 @@
   <%= form.label :player_count, "Number of players" %>
   <%= form.select :player_count, ["2","3","4","5"] %>
   <br>
+  <%= recaptcha_tags %>
   <%= form.submit "Create scenario" %>
 <% end %>
