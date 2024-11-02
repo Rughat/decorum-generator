@@ -1,6 +1,6 @@
 class ScenariosController < ApplicationController
   def create
-    if !Rails.env.production? || verify_recaptcha(model: @user)
+    if verify_recaptcha(model: @user)
       @scenario = Scenario.build(player_count: params[:player_count].to_i, requirement_count: params[:requirement_count].to_i)
       redirect_to scenario_url(@scenario)
     else
