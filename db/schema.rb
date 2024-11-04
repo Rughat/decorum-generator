@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_10_10_173700) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_03_041934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,6 +52,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_10_10_173700) do
     t.datetime "updated_at", null: false
     t.integer "starting_layout_id"
     t.integer "goal_layout_id"
+    t.integer "requirement_count"
+    t.integer "likes"
+    t.integer "dislikes"
+    t.integer "dont_cares"
   end
 
   create_table "tokens", force: :cascade do |t|
