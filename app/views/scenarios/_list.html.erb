@@ -1,5 +1,6 @@
 <tr>
-  <td><%= scenario.id %></td>
-  <td><%= scenario.players.count %></td>
-  <td><%= link_to "Start game", scenario_path(scenario) %></td>
+  <td class="scenario_list_row"><%= scenario.id %></td>
+  <td class="scenario_list_row"><%= scenario.player_count%></td>
+  <td class="scenario_list_row"><%= scenario.requirement_count%></td>
+  <td class="scenario_list_row"><%= link_to "Start game", scenario_path(scenario), class:"button-small" %></td>
 </tr>
