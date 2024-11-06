@@ -1,7 +1,7 @@
 module ComputedRule
   class ExactCountOfColor < Requirement
     def self.random_feature
-      Color.random_color
+      Color.random_colorgroup
     end
 
     def self.build(house:, sections: Section, feature:)
