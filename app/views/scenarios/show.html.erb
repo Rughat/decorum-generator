@@ -13,3 +13,13 @@
     </div>
   <% end %>
 </div>
+
+<% if Rails.env.development? %>
+<h2>Goal Layout:</h2>
+<div data-controller="hiding" id="goal-layout">
+  <button data-hiding-target="button" data-action="hiding#toggle">Show goal layout</button>
+  <div data-hiding-target="hideable" hidden="true">
+    <%= render(partial: "houses/house", locals: { house: @scenario.goal_layout }) %>
+  </div>
+</div>
+<% end %>
