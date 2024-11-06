@@ -10,9 +10,9 @@ module ComputedRule
       rule = create
       rule.text = case count
                   when 3
-                    "The #{room.lower_name} must have three different styles of objects"
+                    "The #{room.lower_name} must have exactly three different styles of objects"
                   when 2
-                    "The #{room.lower_name} must have two different styles of objects"
+                    "The #{room.lower_name} must have exactly two different styles of objects"
                   else
                     "The #{room.lower_name} must have all objects the same style"
                   end
