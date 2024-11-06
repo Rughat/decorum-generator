@@ -5,8 +5,16 @@ class Color
     ALL.sample
   end
 
+  def self.random_group
+    ALL.append("warm", "cool").sample
+  end
+
   def self.random_color
     new(random)
+  end
+
+  def self.random_colorgroup
+    new(random_group)
   end
 
   attr_reader :color
