@@ -53,4 +53,8 @@ class Section
   def opposite
     opposite_index ? SECTION_ARRAY[opposite_index] : nil
   end
+
+  def to_s
+    name
+  end
 end
