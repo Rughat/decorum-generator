@@ -6,7 +6,7 @@ class Color
   end
 
   def self.random_group
-    ALL.append("warm", "cool").sample
+    (ALL + ["warm", "cool"]).sample
   end
 
   def self.random_color
