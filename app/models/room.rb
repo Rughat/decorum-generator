@@ -32,6 +32,10 @@ class Room < ApplicationRecord
     tokens.count { |token| token.short_name == test_furnishing }
   end
 
+  def get_furnishing(test_furnishing)
+    tokens.to_a.find(lambda { EmptyFurnishing.new }) { |token| token.class == test_furnishing }
+  end
+
   def name
     lower_name.tr("_", " ").titleize
   end
