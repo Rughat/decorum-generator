@@ -1,11 +1,3 @@
-<div class="decorum-background">
-  <div class="index-page">
-  <h1>The Autonomous Decorum-Bot</h1>
-  </div>
-</div>
-  <br>
-  <%= link_to "Generate a new scenario", new_scenario_path, class:"button-90 inline" %>
-  <%= link_to "How to play?", { anchor: "how_to_play" }, class: "button-90 inline" %>
   <br>
   <br>
   <h2>List of existing scenarios</h2>
@@ -20,17 +12,3 @@
       <%= render(partial: "scenarios/list", locals: { scenario: scenario }) %>
     <% end %>
   </table>
-  <div id="how_to_play">
-    <h2>How to play?</h2>
-    <ul>
-      <li>Get a copy of <%= link_to "the Decorum board game", "https://floodgate.games/products/decorum?utm_source=boardgamegeek&utm_medium=link&utm_campaign=decorum" %> by <%= link_to "Floodgate Games", "https://floodgate.games/" %>.  This is required to play!</li>
-      <li>Gather a group of friends, and either pick an existing scenario, or generate a new one.</li>
-      <li>Tell the other players the scenario number, and have everyone start the game.</li>
-      <li>Set up the house based on the Starting Layout for your scenario.</li>
-      <li>Pick who is which player (player 1, player 2, etc).  Click on "Show Requirements" to see the list of requirements, automatically hidden.  Click on the individual "Show Requirement" button to see each one.</li>
-      <li>When it comes time to have a heart-to-heart and share requirements with each other, tell the the player you are sharing with which requirment you are sharing with them.  Ex: "Shawnah, I'm showing you my second requirement.  Look at Player 1's requirement # 2.</li>
-    </ul>
-  </div>
-
-  <h2>Disclaimer</h2>
-  <p>The Autonomous Decorum Bot is a private project, and is not associated with Floodgate Games.</p>
