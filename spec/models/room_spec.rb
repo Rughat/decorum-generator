@@ -31,9 +31,9 @@ RSpec.describe Room, type: :model do
     let(:subject) { described_class.new }
 
     it "knows how to count the styles of the room" do
-      subject.tokens.append(Lamp.new(color: "red"))
-      subject.tokens.append(Curio.new(color: "red"))
-      subject.tokens.append(EmptyFurnishing.new)
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio =Curio.new(color: "red")
+      subject.wall_hanging = EmptyWallHanging.new
       expect(subject.count_styles("retro")).to eq(1)
       expect(subject.count_styles("unusual")).to eq(1)
       expect(subject.count_styles("antique")).to eq(0)
@@ -44,9 +44,9 @@ RSpec.describe Room, type: :model do
     let(:subject) { described_class.new }
 
     it "knows how to count the different styles of the room" do
-      subject.tokens.append(Lamp.new(color: "red"))
-      subject.tokens.append(Curio.new(color: "red"))
-      subject.tokens.append(EmptyFurnishing.new)
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "red")
+      subject.wall_hanging = EmptyWallHanging.new
       expect(subject.count_different_styles).to eq(2)
     end
   end
@@ -56,9 +56,9 @@ RSpec.describe Room, type: :model do
 
     it "knows how to count the colors of the room" do
       subject.color = "blue"
-      subject.tokens.append(Lamp.new(color: "red"))
-      subject.tokens.append(Curio.new(color: "blue"))
-      subject.tokens.append(EmptyFurnishing.new)
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = EmptyWallHanging.new
       expect(subject.count_colors(Color.new("red"))).to eq(1)
       expect(subject.count_colors(Color.new("blue"))).to eq(2)
       expect(subject.count_colors(Color.new("green"))).to eq(0)
@@ -70,9 +70,9 @@ RSpec.describe Room, type: :model do
 
     it "knows how to count the furnishings of the room" do
       subject.color = "blue"
-      subject.tokens.append(Lamp.new(color: "red"))
-      subject.tokens.append(Curio.new(color: "blue"))
-      subject.tokens.append(EmptyFurnishing.new)
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = EmptyWallHanging.new
       expect(subject.count_furnishings("lamp")).to eq(1)
       expect(subject.count_furnishings("curio")).to eq(1)
       expect(subject.count_furnishings("empty space")).to eq(1)

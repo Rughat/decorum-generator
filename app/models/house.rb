@@ -35,7 +35,7 @@ class House < ApplicationRecord
     rooms
       .map(&:tokens)
       .flatten
-      .reject {|token| token.class == EmptyFurnishing }
+      .reject(&:empty?)
       .map(&:long_description)
       .tally
       .values

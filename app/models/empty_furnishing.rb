@@ -7,6 +7,10 @@ class EmptyFurnishing < Furnishing
     "empty space"
   end
 
+  def self.empty?
+    true
+  end
+
   def long_description
     "An empty spot"
   end
@@ -17,5 +21,9 @@ class EmptyFurnishing < Furnishing
 
   def style
     nil
+  end
+
+  def empty?
+    true
   end
 end

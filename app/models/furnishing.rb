@@ -4,10 +4,18 @@ class Furnishing < Token
   end
 
   def self.random_real
-    (subclasses - [EmptyFurnishing]).sample
+    subclasses.reject(&:empty?).sample
+  end
+
+  def self.empty?
+    false
   end
 
   def short_name
     self.class.short_name
+  end
+
+  def empty?
+    false
   end
 end
