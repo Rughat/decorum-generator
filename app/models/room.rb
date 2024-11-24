@@ -1,6 +1,8 @@
 class Room < ApplicationRecord
   belongs_to :house
-  has_many :tokens
+  has_one :lamp
+  has_one :curio
+  has_one :wall_hanging
 
   LEFT_SIDE_ROOMS = ["bathroom", "living_room"]
   BOTTOM_FLOOR_ROOMS = ["kitchen", "living_room"]
@@ -8,9 +10,9 @@ class Room < ApplicationRecord
   def self.generate(room_type:)
     room = Room.create(room_type: room_type)
     room.color = Color.random
-    room.tokens.append(Lamp.random)
-    room.tokens.append(Curio.random)
-    room.tokens.append(WallHanging.random)
+    room.lamp = Lamp.random
+    room.curio = Curio.random
+    room.wall_hanging = WallHanging.random
     room.save
     room
   end
@@ -19,8 +21,12 @@ class Room < ApplicationRecord
     tokens.count { |token| token.style == test_style }
   end
 
+  def tokens
+    [curio, lamp, wall_hanging]
+  end
+
   def count_different_styles
-    tokens.reject {|t| t.class == EmptyFurnishing }.map(&:style).uniq.count
+    tokens.reject {|t| t.empty? }.map(&:style).uniq.count
   end
 
   def count_colors(test_color)

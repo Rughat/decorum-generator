@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_03_041934) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_10_234656) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_03_041934) do
     t.string "color"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lamp_id"
+    t.bigint "curio_id"
+    t.bigint "wall_hanging_id"
+    t.index ["curio_id"], name: "index_rooms_on_curio_id"
     t.index ["house_id"], name: "index_rooms_on_house_id"
+    t.index ["lamp_id"], name: "index_rooms_on_lamp_id"
+    t.index ["wall_hanging_id"], name: "index_rooms_on_wall_hanging_id"
   end
 
   create_table "scenarios", force: :cascade do |t|
@@ -70,5 +76,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_03_041934) do
   add_foreign_key "players", "scenarios"
   add_foreign_key "requirements", "players"
   add_foreign_key "rooms", "houses"
+  add_foreign_key "rooms", "tokens", column: "curio_id"
+  add_foreign_key "rooms", "tokens", column: "lamp_id"
+  add_foreign_key "rooms", "tokens", column: "wall_hanging_id"
   add_foreign_key "tokens", "rooms"
 end

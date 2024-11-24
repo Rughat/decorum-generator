@@ -88,9 +88,9 @@ RSpec.describe House, type: :model do
     let(:kitchen) { build(:room, room_type: "kitchen") }
     let(:bathroom) { build(:room, room_type: "bathroom") }
 
-    let(:living_room_tokens) { [Lamp.new(color: "red"), EmptyFurnishing.new, EmptyFurnishing.new] }
+    let(:living_room_tokens) { [Lamp.new(color: "red"), EmptyCurio.new, EmptyWallHanging.new] }
     let(:bedroom_tokens) { [Curio.new(color: "blue"), Lamp.new(color: "red"), WallHanging.new(color: "green")] }
-    let(:kitchen_tokens) { [EmptyFurnishing.new, EmptyFurnishing.new, EmptyFurnishing.new] }
+    let(:kitchen_tokens) { [EmptyCurio.new, EmptyLamp.new, EmptyWallHanging.new] }
     let(:bathroom_tokens) { [Curio.new(color: "blue"), Lamp.new(color: "yellow"), WallHanging.new(color: "blue")] }
 
     it "returns the expected number of furnishings" do
