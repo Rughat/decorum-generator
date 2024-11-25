@@ -34,6 +34,10 @@ class Room < ApplicationRecord
       (test_color.equal?(color) ? 1 : 0)
   end
 
+  def get_distinct_colors
+    (tokens.reject {|t| t.empty? }.map { |token| token.color } + [color]).map(&:to_s).uniq
+  end
+
   def count_furnishings(test_furnishing)
     tokens.count { |token| token.short_name == test_furnishing }
   end

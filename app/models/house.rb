@@ -42,4 +42,11 @@ class House < ApplicationRecord
       .reject {|value| value < 2 }
       .count
   end
+
+  def get_distinct_colors(section:)
+    rooms.select { |room| section.rooms.include?(room.room_type) }
+      .map(&:get_distinct_colors)
+      .flatten
+      .uniq
+  end
 end
