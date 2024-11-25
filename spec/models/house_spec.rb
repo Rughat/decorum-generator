@@ -106,4 +106,28 @@ RSpec.describe House, type: :model do
       expect(subject.count_duplicate_furnishing).to eq(2)
     end
   end
+  describe "#get_distinct_colors" do
+    let(:subject) { build(:house) }
+    let(:color) { "blue" }
+    let(:section) { instance_double(Section) }
+    let(:living_room) { build(:room, room_type: "living_room") }
+    let(:bedroom) { build(:room, room_type: "bedroom") }
+    let(:kitchen) { build(:room, room_type: "kitchen") }
+    let(:bathroom) { build(:room, room_type: "bathroom") }
+
+    it "returns the expected number of colors" do
+      expect(section).to receive(:rooms).exactly(4).times.and_return(["kitchen", "bedroom"])
+      expect(living_room).not_to receive(:get_distinct_colors)
+      expect(bathroom).not_to receive(:get_distinct_colors)
+      expect(bedroom).to receive(:get_distinct_colors).and_return(["red","blue"])
+      allow(kitchen).to receive(:get_distinct_colors).and_return(["red","green"])
+      subject.rooms.append(living_room)
+      subject.rooms.append(bedroom)
+      subject.rooms.append(bathroom)
+      subject.rooms.append(kitchen)
+
+      expect(subject.get_distinct_colors(section: section)).to contain_exactly("red","blue","green")
+    end
+  end
+
 end

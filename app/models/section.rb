@@ -31,6 +31,10 @@ class Section
     new(randomizer.rand(4) + 7)
   end
 
+  def self.all_rooms
+    (7..10).map { |number| new(number) }
+  end
+
   attr_accessor :index, :opposite_index
 
   def initialize(section)

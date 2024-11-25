@@ -51,6 +51,20 @@ RSpec.describe Room, type: :model do
     end
   end
 
+  describe "#get_distinct_colors" do
+    let(:subject) { described_class.new }
+
+    it "knows how to get the distinct colors of the room" do
+      subject.color = "blue"
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = EmptyWallHanging.new
+      expect(subject.get_distinct_colors).to contain_exactly("blue","red")
+    end
+  end
+
+
+
   describe "#count_colors" do
     let(:subject) { described_class.new }
 

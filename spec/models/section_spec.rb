@@ -68,4 +68,10 @@ RSpec.describe Section do
     expect(randomizer).to receive(:rand).with(6).and_return(0)
     expect(described_class.random_multiroom_opposable(randomizer: randomizer).name).to eq("top floor")
   end
+
+  it "should list all of the rooms when asked for all rooms" do
+    rooms = described_class.all_rooms
+    expect(rooms).to all( be_a(Section))
+    expect(rooms.map(&:name)).to contain_exactly("bathroom", "bedroom", "living room", "kitchen")
+  end
 end
