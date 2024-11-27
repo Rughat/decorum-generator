@@ -44,6 +44,9 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+# Browser data support
+gem "browser"
+
 # reCaptcha bot protection
 gem "recaptcha"
 
