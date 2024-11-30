@@ -1,7 +1,7 @@
 module ComputedRule
   class DuplicateFurnishing < Requirement
     def self.random_feature
-      nil
+      "singular_rule"
     end
 
     def self.build(house:, feature:)

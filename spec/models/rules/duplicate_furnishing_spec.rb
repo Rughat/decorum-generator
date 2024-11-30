@@ -2,8 +2,8 @@ require "rails_helper"
 
 RSpec.describe ComputedRule::DuplicateFurnishing do
   describe ".random_feature" do
-    it "always returns nil" do
-      expect(described_class.random_feature).to eq(nil)
+    it "always returns a singlular_rule" do
+      expect(described_class.random_feature).to eq("singular_rule")
     end
   end
 
