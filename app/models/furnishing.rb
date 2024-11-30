@@ -7,6 +7,10 @@ class Furnishing < Token
     subclasses.reject(&:empty?).sample
   end
 
+  def self.random_aspect
+    ["color", "style", "furnishing"]
+  end
+
   def self.empty?
     false
   end

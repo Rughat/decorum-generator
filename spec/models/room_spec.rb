@@ -93,4 +93,62 @@ RSpec.describe Room, type: :model do
       expect(subject.count_furnishings("wall hanging")).to eq(0)
     end
   end
+
+  describe "#style_array" do
+    let(:subject) { described_class.new }
+
+    it "returns an array of the styles in the room" do
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = WallHanging.new(color: "blue")
+      expect(subject.style_array).to contain_exactly("retro","retro","antique")
+    end
+
+    it "returns an empty array if there are no objects in the room" do
+      subject.lamp = EmptyLamp.new
+      subject.curio = EmptyCurio.new
+      subject.wall_hanging = EmptyWallHanging.new
+      expect(subject.style_array).to be_empty
+    end
+  end
+
+  describe "#color_array" do
+    let(:subject) { described_class.new }
+
+    it "returns an array of the colors in the room, including the wall color" do
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = WallHanging.new(color: "blue")
+      subject.color = "green"
+      expect(subject.color_array).to contain_exactly("blue","blue","green","red")
+    end
+
+    it "returns the wall color alone if there are no objects in the room" do
+      subject.lamp = EmptyLamp.new
+      subject.curio = EmptyCurio.new
+      subject.wall_hanging = EmptyWallHanging.new
+      subject.color = "green"
+      expect(subject.color_array).to contain_exactly("green")
+    end
+  end
+
+  describe "#furnishing_array" do
+    let(:subject) { described_class.new }
+
+    it "returns an array of the short names of the furnishings in the room" do
+      subject.lamp = Lamp.new(color: "red")
+      subject.curio = Curio.new(color: "blue")
+      subject.wall_hanging = EmptyWallHanging.new
+      expect(subject.furnishing_array).to contain_exactly("lamp","curio")
+    end
+
+    it "returns an empty array if there are no objects in the room" do
+      subject.lamp = EmptyLamp.new
+      subject.curio = EmptyCurio.new
+      subject.wall_hanging = EmptyWallHanging.new
+      expect(subject.furnishing_array).to be_empty
+    end
+  end
+
+
 end
