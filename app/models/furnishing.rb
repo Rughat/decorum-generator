@@ -8,7 +8,7 @@ class Furnishing < Token
   end
 
   def self.random_aspect
-    ["color", "style", "furnishing"]
+    ["color", "style", "furnishing"].sample
   end
 
   def self.empty?
