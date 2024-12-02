@@ -17,12 +17,28 @@ class Room < ApplicationRecord
     room
   end
 
-  def count_styles(test_style)
-    tokens.count { |token| token.style == test_style }
-  end
-
   def tokens
     [curio, lamp, wall_hanging]
+  end
+
+  def non_empty_furnishings
+    tokens.reject(&:empty?)
+  end
+
+  def style_array
+    non_empty_furnishings.map(&:style)
+  end
+
+  def color_array
+    non_empty_furnishings.map(&:color).map(&:to_s) + [color.to_s]
+  end
+
+  def furnishing_array
+    non_empty_furnishings.map(&:short_name)
+  end
+
+  def count_styles(test_style)
+    tokens.count { |token| token.style == test_style }
   end
 
   def count_different_styles

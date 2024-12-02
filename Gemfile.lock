@@ -371,6 +371,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    spring (4.2.1)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -450,6 +453,7 @@ DEPENDENCIES
   rspec-collection_matchers
   rspec-rails
   selenium-webdriver
+  spring-commands-rspec
   sprockets-rails
   standard
   stimulus-rails

@@ -49,4 +49,9 @@ class House < ApplicationRecord
       .flatten
       .uniq
   end
+
+  def get_majority(aspect)
+    aspects = rooms.map { |room| room.public_send("#{aspect}_array") }.flatten
+    aspects.max_by { |curr_aspect| aspects.count(curr_aspect) }
+  end
 end

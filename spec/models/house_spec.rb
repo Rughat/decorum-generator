@@ -130,4 +130,53 @@ RSpec.describe House, type: :model do
     end
   end
 
+  describe "#get_majority" do
+    let(:subject) { build(:house) }
+    let(:living_room) { build(:room, room_type: "living_room") }
+    let(:bedroom) { build(:room, room_type: "bedroom") }
+    let(:kitchen) { build(:room, room_type: "kitchen") }
+    let(:bathroom) { build(:room, room_type: "bathroom") }
+
+    context "for color" do
+      it "returns the color that appears the most in all of the rooms" do
+        subject.rooms.append(living_room)
+        subject.rooms.append(bedroom)
+        subject.rooms.append(bathroom)
+        subject.rooms.append(kitchen)
+        expect(living_room).to receive(:color_array).and_return(["blue","red","green"])
+        expect(bedroom).to receive(:color_array).and_return(["yellow","green","green"])
+        expect(kitchen).to receive(:color_array).and_return(["blue","blue","red","green"])
+        expect(bathroom).to receive(:color_array).and_return(["red","green"])
+        expect(subject.get_majority("color")).to eq("green")
+      end
+    end
+
+    context "for style" do
+      it "returns the style that appears the most in all of the rooms" do
+        subject.rooms.append(living_room)
+        subject.rooms.append(bedroom)
+        subject.rooms.append(bathroom)
+        subject.rooms.append(kitchen)
+        expect(living_room).to receive(:style_array).and_return(["modern","modern","retro"])
+        expect(bedroom).to receive(:style_array).and_return(["antique"])
+        expect(kitchen).to receive(:style_array).and_return(["unusual","retro"])
+        expect(bathroom).to receive(:style_array).and_return(["retro"])
+        expect(subject.get_majority("style")).to eq("retro")
+      end
+    end
+
+    context "for furnishing" do
+      it "returns the furnishing that appears the most in all of the rooms" do
+        subject.rooms.append(living_room)
+        subject.rooms.append(bedroom)
+        subject.rooms.append(bathroom)
+        subject.rooms.append(kitchen)
+        expect(living_room).to receive(:furnishing_array).and_return(["lamp","wall hanging","curio"])
+        expect(bedroom).to receive(:furnishing_array).and_return(["lamp"])
+        expect(kitchen).to receive(:furnishing_array).and_return(["wall hanging","curio"])
+        expect(bathroom).to receive(:furnishing_array).and_return(["lamp"])
+        expect(subject.get_majority("furnishing")).to eq("lamp")
+      end
+    end
+  end
 end
