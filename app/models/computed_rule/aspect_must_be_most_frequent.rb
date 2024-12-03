@@ -8,6 +8,9 @@ module ComputedRule
       rule = create
       majority_aspect = house.get_majority(feature)
       addendum = (feature == "color") ? " (as objects and/or wall color)" : ""
+      if feature == "furnishing"
+        majority_aspect = majority_aspect.pluralize
+      end
       rule.text = "No other #{feature} in the house may appear more frequently than #{majority_aspect}#{addendum}"
       rule.save
       rule

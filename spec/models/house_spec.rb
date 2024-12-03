@@ -130,6 +130,25 @@ RSpec.describe House, type: :model do
     end
   end
 
+  describe "#wall_colors" do
+    let(:subject) { build(:house) }
+    let(:section) { instance_double(Section) }
+    let(:living_room) { build(:room, room_type: "living_room", color: "red") }
+    let(:bedroom) { build(:room, room_type: "bedroom", color: "blue") }
+    let(:kitchen) { build(:room, room_type: "kitchen", color: "red") }
+    let(:bathroom) { build(:room, room_type: "bathroom", color: "green") }
+
+    it "returns the list of wall colors" do
+      subject.rooms.append(living_room)
+      subject.rooms.append(bedroom)
+      subject.rooms.append(bathroom)
+      subject.rooms.append(kitchen)
+
+      expect(subject.wall_colors).to contain_exactly("red","blue","red","green")
+    end
+
+  end
+
   describe "#get_majority" do
     let(:subject) { build(:house) }
     let(:living_room) { build(:room, room_type: "living_room") }
