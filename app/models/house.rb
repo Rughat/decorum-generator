@@ -54,4 +54,8 @@ class House < ApplicationRecord
     aspects = rooms.map { |room| room.public_send("#{aspect}_array") }.flatten
     aspects.max_by { |curr_aspect| aspects.count(curr_aspect) }
   end
+
+  def wall_colors
+    rooms.map(&:color)
+  end
 end
