@@ -23,6 +23,10 @@ class Section
     new(randomizer.rand(SECTION_ARRAY.length - 1) + 1)
   end
 
+  def self.random_multiroom(randomizer: Kernel)
+    new(randomizer.rand(7))
+  end
+
   def self.random_multiroom_opposable(randomizer: Kernel)
     new(randomizer.rand(6) + 1)
   end
