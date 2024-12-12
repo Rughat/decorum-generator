@@ -12,7 +12,7 @@ module ComputedRule
       rule.text = if count == opposite_count
         "The #{section.name} must contain an equal amount of #{feature.pluralize} as the #{section.opposite.name}"
       else
-        "The #{section.name} must contain #{(count < opposite_count) ? "less" : "more"} #{feature.pluralize} than the #{section.opposite.name}"
+        "The #{section.name} must contain #{(count < opposite_count) ? "fewer" : "more"} #{feature.pluralize} than the #{section.opposite.name}"
       end
       rule.save
       rule

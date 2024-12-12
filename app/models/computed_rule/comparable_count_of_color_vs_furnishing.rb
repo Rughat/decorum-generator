@@ -14,7 +14,7 @@ module ComputedRule
       rule.text = if furnishing_count == color_count
                     "The #{section.name} must contain an equal number of #{furnishing.pluralize} and #{color} features (as objects and/or wall colors)"
       else
-        "The #{section.name} must contain #{(furnishing_count < color_count) ? "less" : "more"} #{furnishing.pluralize} than #{color} features (as objects and/or wall colors)"
+        "The #{section.name} must contain #{(furnishing_count < color_count) ? "fewer" : "more"} #{furnishing.pluralize} than #{color} features (as objects and/or wall colors)"
       end
       rule.save
       rule

@@ -17,7 +17,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsStyle do
     let(:feature) { "blue-retro" }
     let(:selected_section) { instance_double(Section) }
 
-    it "randomly builds a rule from the given house when there is less of the style than of the color in the section" do
+    it "randomly builds a rule from the given house when there is fewer of the style than of the color in the section" do
       expect(sections).to receive(:random_multiroom).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(Color).to receive(:new).with("blue").and_return(color)
@@ -25,7 +25,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsStyle do
       expect(house).to receive(:count_styles).with(style: style, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain less retro objects than blue features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain fewer retro objects than blue features (as objects and/or wall colors)")
     end
 
     it "randomly builds a rule from the given house when there is more of the style than of the color in the section" do

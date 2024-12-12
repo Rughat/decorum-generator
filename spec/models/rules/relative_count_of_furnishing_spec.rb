@@ -26,7 +26,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
       expect(subject.text).to eq("The top floor must contain more lamps than the bottom floor")
     end
 
-    it "randomly builds a rule from the given house when there are less in the first section" do
+    it "randomly builds a rule from the given house when there are fewer in the first section" do
       expect(sections).to receive(:random_multiroom_opposable).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
@@ -35,7 +35,7 @@ RSpec.describe ComputedRule::RelativeCountOfFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: "lamp", section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: "lamp", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain less lamps than the bottom floor")
+      expect(subject.text).to eq("The top floor must contain fewer lamps than the bottom floor")
     end
 
     it "randomly builds a rule from the given house when there are an equal amount in both sections" do
