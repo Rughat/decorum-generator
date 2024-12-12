@@ -17,14 +17,14 @@ RSpec.describe ComputedRule::ComparableCountOfStyleVsFurnishing do
     let(:feature) { "retro-wall hanging" }
     let(:selected_section) { instance_double(Section) }
 
-    it "randomly builds a rule from the given house when there is less of the furnishing than of the style in the section" do
+    it "randomly builds a rule from the given house when there is fewer of the furnishing than of the style in the section" do
       expect(sections).to receive(:random_multiroom).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(house).to receive(:count_styles).with(style: style, section: selected_section).and_return(4)
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain less wall hangings than retro features")
+      expect(subject.text).to eq("The top floor must contain fewer wall hangings than retro features")
     end
 
     it "randomly builds a rule from the given house when there is more of the furnishing than of the style in the section" do

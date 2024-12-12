@@ -14,7 +14,7 @@ module ComputedRule
       rule.text = if style_count == color_count
         "The #{section.name} must contain an equal number of #{style} objects and #{color} features (as objects and/or wall colors)"
       else
-        "The #{section.name} must contain #{(style_count < color_count) ? "less" : "more"} #{style} objects than #{color} features (as objects and/or wall colors)"
+        "The #{section.name} must contain #{(style_count < color_count) ? "fewer" : "more"} #{style} objects than #{color} features (as objects and/or wall colors)"
       end
       rule.save
       rule

@@ -13,7 +13,7 @@ module ComputedRule
       rule.text = if furnishing_count == style_count
                     "The #{section.name} must contain an equal number of #{furnishing.pluralize} and #{style} features"
       else
-        "The #{section.name} must contain #{(furnishing_count < style_count) ? "less" : "more"} #{furnishing.pluralize} than #{style} features"
+        "The #{section.name} must contain #{(furnishing_count < style_count) ? "fewer" : "more"} #{furnishing.pluralize} than #{style} features"
       end
       rule.save
       rule
