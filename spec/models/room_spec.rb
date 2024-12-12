@@ -8,6 +8,9 @@ RSpec.describe Room, type: :model do
     expect(room.floor).to eq("top")
     expect(room.color).to be_in(Color::ALL)
     expect(room.tokens).to all(be_a(Furnishing)).and have_exactly(3).items
+    expect(room.tokens[0].class).to eq(WallHanging).or eq(EmptyWallHanging)
+    expect(room.tokens[1].class).to eq(Lamp).or eq(EmptyLamp)
+    expect(room.tokens[2].class).to eq(Curio).or eq(EmptyCurio)
   end
 
   it "knows how to generate each type of room" do
@@ -15,16 +18,25 @@ RSpec.describe Room, type: :model do
     expect(subject.name).to eq("Living Room")
     expect(subject.side).to eq("left")
     expect(subject.floor).to eq("bottom")
+    expect(subject.tokens[0].class).to eq(Curio).or eq(EmptyCurio)
+    expect(subject.tokens[1].class).to eq(Lamp).or eq(EmptyLamp)
+    expect(subject.tokens[2].class).to eq(WallHanging).or eq(EmptyWallHanging)
 
     subject = described_class.generate(room_type: "kitchen")
     expect(subject.name).to eq("Kitchen")
     expect(subject.side).to eq("right")
     expect(subject.floor).to eq("bottom")
+    expect(subject.tokens[0].class).to eq(Lamp).or eq(EmptyLamp)
+    expect(subject.tokens[1].class).to eq(WallHanging).or eq(EmptyWallHanging)
+    expect(subject.tokens[2].class).to eq(Curio).or eq(EmptyCurio)
 
     subject = described_class.generate(room_type: "bathroom")
     expect(subject.name).to eq("Bathroom")
     expect(subject.side).to eq("left")
     expect(subject.floor).to eq("top")
+    expect(subject.tokens[0].class).to eq(Curio).or eq(EmptyCurio)
+    expect(subject.tokens[1].class).to eq(WallHanging).or eq(EmptyWallHanging)
+    expect(subject.tokens[2].class).to eq(Lamp).or eq(EmptyLamp)
   end
 
   describe "#count_styles" do
