@@ -34,6 +34,17 @@ class Color
     end
   end
 
+  def display
+    case color
+    when "cool"
+      "cool (<span class=\"blue\">blue</span> or <span class=\"green\">green</span>)"
+    when "warm"
+      "warm (<span class=\"red\">red</span> or <span class=\"yellow\">yellow</span>)"
+    else
+      "<span class=\"#{color}\">#{color}</span>"
+    end.html_safe
+  end
+
   def equal?(other)
     case color
     when "cool"

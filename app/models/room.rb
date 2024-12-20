@@ -81,4 +81,8 @@ class Room < ApplicationRecord
   def floor
     BOTTOM_FLOOR_ROOMS.include?(room_type) ? "bottom" : "top"
   end
+
+  def color_obj
+    @color ||= Color.new(color)
+  end
 end

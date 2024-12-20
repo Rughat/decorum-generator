@@ -24,7 +24,7 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
         expect(room).to receive(:get_furnishing).with(specific_type).and_return(specific_furnishing)
         subject = described_class.build(house: house, feature: feature, furnishings: furnishings)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The bathroom must contain a red retro lamp")
+        expect(subject.text).to eq("The bathroom must contain a <span class=\"red\">red<\/span> retro lamp")
       end
     end
 

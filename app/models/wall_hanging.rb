@@ -24,7 +24,7 @@ class WallHanging < Furnishing
   end
 
   def long_description
-    "A #{color_obj} #{style} wall hanging"
+    "A #{color_obj.display} #{style} wall hanging".html_safe
   end
 
   def color_obj

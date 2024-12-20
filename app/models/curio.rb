@@ -24,7 +24,7 @@ class Curio < Furnishing
   end
 
   def long_description
-    "A #{color_obj} #{style} curio"
+    "A #{color_obj.display} #{style} curio".html_safe
   end
 
   def color_obj

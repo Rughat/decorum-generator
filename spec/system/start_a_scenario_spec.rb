@@ -18,22 +18,22 @@ RSpec.describe "creating a new scenario", js: true do
       within "#starting-layout" do
         within "#room-layout-bathroom" do
           furnishings = all(".furnishing")
-          expect(furnishings).to all(match(/A (red|blue|green|yellow) (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
+          expect(furnishings).to all(match(/A <span class="(red|blue|green|yellow)">(red|blue|green|yellow)<\/span> (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
         end
 
         within "#room-layout-bedroom" do
           furnishings = all(".furnishing")
-          expect(furnishings).to all(match(/A (red|blue|green|yellow) (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
+          expect(furnishings).to all(match(/A <span class="(red|blue|green|yellow)">(red|blue|green|yellow)<\/span> (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
         end
 
         within "#room-layout-living-room" do
           furnishings = all(".furnishing")
-          expect(furnishings).to all(match(/A (red|blue|green|yellow) (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
+          expect(furnishings).to all(match(/A <span class="(red|blue|green|yellow)">(red|blue|green|yellow)<\/span> (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
         end
 
         within "#room-layout-kitchen" do
           furnishings = all(".furnishing")
-          expect(furnishings).to all(match(/A (red|blue|green|yellow) (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
+          expect(furnishings).to all(match(/A <span class="(red|blue|green|yellow)">(red|blue|green|yellow)<\/span> (antique|modern|retro|unusual) (curio|lamp|wall hanging)/)).and have_at_most(3).items
         end
       end
 
