@@ -16,7 +16,7 @@ RSpec.describe ComputedRule::AspectMustBeMostFrequent do
         expect(house).to receive(:get_majority).with("color").and_return("blue")
         subject = described_class.build(house: house, feature: "color")
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("No other color in the house may appear more frequently than blue (as objects and/or wall color)")
+        expect(subject.text).to eq("No other color in the house may appear more frequently than <span class=\"blue\">blue<\/span> (as objects and/or wall color)")
       end
     end
 

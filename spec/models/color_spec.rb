@@ -9,6 +9,7 @@ RSpec.describe Color, type: :model do
       expect(subject.equal?(described_class.new("red"))).to be_truthy
       expect(subject.equal?("blue")).to be_falsey
       expect(subject.equal?(described_class.new("green"))).to be_falsey
+      expect(subject.display).to eq("<span class=\"red\">red<\/span>")
     end
 
     it "correctly creats a warm color" do
@@ -18,6 +19,7 @@ RSpec.describe Color, type: :model do
       expect(subject.equal?(described_class.new("yellow"))).to be_truthy
       expect(subject.equal?("blue")).to be_falsey
       expect(subject.equal?(described_class.new("green"))).to be_falsey
+      expect(subject.display).to eq("warm (<span class=\"red\">red<\/span> or <span class=\"yellow\">yellow<\/span>)")
     end
 
     it "correctly creats a cool color" do
@@ -27,6 +29,7 @@ RSpec.describe Color, type: :model do
       expect(subject.equal?(described_class.new("yellow"))).to be_falsey
       expect(subject.equal?("blue")).to be_truthy
       expect(subject.equal?(described_class.new("green"))).to be_truthy
+      expect(subject.display).to eq("cool (<span class=\"blue\">blue<\/span> or <span class=\"green\">green<\/span>)")
     end
 
     it "can compare a primary color to a descriptor" do

@@ -24,7 +24,7 @@ class Lamp < Furnishing
   end
 
   def long_description
-    "A #{color_obj} #{style} lamp"
+    "A #{color_obj.display} #{style} lamp".html_safe
   end
 
   def color_obj

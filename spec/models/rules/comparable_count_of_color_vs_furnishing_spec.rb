@@ -25,7 +25,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain fewer wall hangings than blue features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain fewer wall hangings than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
 
     it "randomly builds a rule from the given house when there is more of the furnishing than of the color in the section" do
@@ -36,7 +36,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain more wall hangings than blue features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain more wall hangings than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
 
     it "randomly builds a rule from the given house when there is an equal amount of the furnishing and of the color in the section" do
@@ -47,7 +47,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain an equal number of wall hangings and blue features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain an equal number of wall hangings and <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
   end
 end

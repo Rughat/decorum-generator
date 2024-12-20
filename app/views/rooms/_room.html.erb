@@ -1,7 +1,7 @@
 <div id="<%= room.room_html_id%>">
   <p>
     <p><%= room.name %></p>
-    <p>Wall color: <%= room.color %></p>
+    <p>Wall color: <%= room.color_obj.display %></p>
     <ul>
       <% room.tokens.each do |token| %>
         <li><%= token.long_description %></li>

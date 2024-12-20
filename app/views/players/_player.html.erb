@@ -7,7 +7,7 @@
         <li>
           <button data-hiding-target="button" data-action="hiding#toggle" class="button-90 inline">Show requirement <%= index + 1 %></button>
           <div data-hiding-target="hideable" class="inline" hidden="true">
-            <%= requirement.text %>
+            <%= requirement.text.html_safe %>
           </div>
         </li>
     <% end %>

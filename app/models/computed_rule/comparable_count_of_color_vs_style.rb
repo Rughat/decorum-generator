@@ -12,9 +12,9 @@ module ComputedRule
       style_count = house.count_styles(style: style, section: section)
       rule = create
       rule.text = if style_count == color_count
-        "The #{section.name} must contain an equal number of #{style} objects and #{color} features (as objects and/or wall colors)"
+                    "The #{section.name} must contain an equal number of #{style} objects and #{color.display} features (as objects and/or wall colors)".html_safe
       else
-        "The #{section.name} must contain #{(style_count < color_count) ? "fewer" : "more"} #{style} objects than #{color} features (as objects and/or wall colors)"
+        "The #{section.name} must contain #{(style_count < color_count) ? "fewer" : "more"} #{style} objects than #{color.display} features (as objects and/or wall colors)".html_safe
       end
       rule.save
       rule
