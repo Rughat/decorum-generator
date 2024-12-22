@@ -5,6 +5,30 @@ margin-bottom:1%;
 margin-top:1%;
 }
 
+.icon-curio {
+  background-image: url("/icons/curio.png");
+  background-size: cover;
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+}
+
+.icon-lamp {
+  background-image: url("/icons/lamp.png");
+  background-size: cover;
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+}
+
+.icon-wall-hanging {
+  background-image: url("/icons/wall_hanging.png");
+  background-size: cover;
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+}
+
 .decorum-background {
   background-image: url("/decorum_image.png");
   background-size: cover;

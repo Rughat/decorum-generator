@@ -24,10 +24,14 @@ class Lamp < Furnishing
   end
 
   def long_description
-    "A #{color_obj.display} #{style} lamp".html_safe
+    "A #{color_obj.display} #{style} lamp#{icon}".html_safe
   end
 
   def color_obj
     @color ||= Color.new(color)
+  end
+
+  def icon
+    "<span class=\"icon-lamp\"><\/span>".html_safe
   end
 end

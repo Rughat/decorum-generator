@@ -19,6 +19,10 @@ module EmptyMixin
     nil
   end
 
+  def icon
+    ""
+  end
+
   module ClassMethods
     def short_name
       "empty space"
