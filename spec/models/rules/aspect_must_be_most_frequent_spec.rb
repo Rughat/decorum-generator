@@ -31,10 +31,10 @@ RSpec.describe ComputedRule::AspectMustBeMostFrequent do
 
     context "when using the furnishing aspect" do
       it "builds the rule requiring that the majority furnishing is required to be greater than any other in the house" do
-        expect(house).to receive(:get_majority).with("furnishing").and_return("lamp")
+        expect(house).to receive(:get_majority).with("furnishing").and_return("Lamp")
         subject = described_class.build(house: house, feature: "furnishing")
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("No other furnishing in the house may appear more frequently than lamps")
+        expect(subject.text).to eq("No other furnishing in the house may appear more frequently than lamps<span class=\"icon-lamp\"></span>")
       end
     end
   end

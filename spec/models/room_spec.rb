@@ -135,11 +135,11 @@ RSpec.describe Room, type: :model do
   describe "#furnishing_array" do
     let(:subject) { described_class.new }
 
-    it "returns an array of the short names of the furnishings in the room" do
+    it "returns an array of the class strings of the furnishings in the room" do
       subject.lamp = Lamp.new(color: "red")
-      subject.curio = Curio.new(color: "blue")
-      subject.wall_hanging = EmptyWallHanging.new
-      expect(subject.furnishing_array).to contain_exactly("lamp","curio")
+      subject.curio = EmptyCurio.new
+      subject.wall_hanging = WallHanging.new(color: "blue")
+      expect(subject.furnishing_array).to contain_exactly("Lamp","WallHanging")
     end
 
     it "returns an empty array if there are no objects in the room" do

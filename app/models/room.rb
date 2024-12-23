@@ -34,7 +34,7 @@ class Room < ApplicationRecord
   end
 
   def furnishing_array
-    non_empty_furnishings.map(&:short_name)
+    non_empty_furnishings.map(&:class).map(&:to_s)
   end
 
   def count_styles(test_style)

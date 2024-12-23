@@ -7,12 +7,16 @@ module ComputedRule
     def self.build(house:, feature:)
       rule = create
       majority_aspect = house.get_majority(feature)
-      addendum = (feature == "color") ? " (as objects and/or wall color)" : ""
       case feature
+      when "style"
+        addendum = ""
       when "color"
         majority_aspect = Color.new(majority_aspect).display
+        addendum = " (as objects and/or wall color)"
       when "furnishing"
-        majority_aspect = majority_aspect.pluralize
+        furnishing = majority_aspect.constantize.new
+        majority_aspect = furnishing.short_name.pluralize
+        addendum = furnishing.icon
       end
       rule.text = "No other #{feature} in the house may appear more frequently than #{majority_aspect}#{addendum}".html_safe
       rule.save

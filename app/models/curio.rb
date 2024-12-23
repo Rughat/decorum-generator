@@ -24,10 +24,14 @@ class Curio < Furnishing
   end
 
   def long_description
-    "A #{color_obj.display} #{style} curio".html_safe
+    "A #{color_obj.display} #{style} curio#{icon}".html_safe
   end
 
   def color_obj
     @color ||= Color.new(color)
+  end
+
+  def icon
+    "<span class=\"icon-curio\"><\/span>".html_safe
   end
 end

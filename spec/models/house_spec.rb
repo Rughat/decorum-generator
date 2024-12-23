@@ -190,11 +190,11 @@ RSpec.describe House, type: :model do
         subject.rooms.append(bedroom)
         subject.rooms.append(bathroom)
         subject.rooms.append(kitchen)
-        expect(living_room).to receive(:furnishing_array).and_return(["lamp","wall hanging","curio"])
-        expect(bedroom).to receive(:furnishing_array).and_return(["lamp"])
-        expect(kitchen).to receive(:furnishing_array).and_return(["wall hanging","curio"])
-        expect(bathroom).to receive(:furnishing_array).and_return(["lamp"])
-        expect(subject.get_majority("furnishing")).to eq("lamp")
+        expect(living_room).to receive(:furnishing_array).and_return(["Lamp","WallHanging","Curio"])
+        expect(bedroom).to receive(:furnishing_array).and_return(["Lamp"])
+        expect(kitchen).to receive(:furnishing_array).and_return(["WallHanging","Curio"])
+        expect(bathroom).to receive(:furnishing_array).and_return(["Lamp"])
+        expect(subject.get_majority("furnishing")).to eq("Lamp")
       end
     end
   end
