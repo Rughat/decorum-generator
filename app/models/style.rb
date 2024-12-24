@@ -18,6 +18,14 @@ class Style
     style
   end
 
+  def icon
+    "<span class=\"icon-#{style}\"><\/span>".html_safe
+  end
+
+  def display
+    "#{style}#{icon}".html_safe
+  end
+
   private
 
   attr_writer :style
