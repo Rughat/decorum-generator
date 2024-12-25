@@ -25,7 +25,7 @@ RSpec.describe ComputedRule::AspectMustBeMostFrequent do
         expect(house).to receive(:get_majority).with("style").and_return("modern")
         subject = described_class.build(house: house, feature: "style")
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("No other style in the house may appear more frequently than modern")
+        expect(subject.text).to eq("No other style in the house may appear more frequently than modern<span class=\"icon-modern\"><\/span>")
       end
     end
 
