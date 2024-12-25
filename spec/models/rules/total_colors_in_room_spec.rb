@@ -39,7 +39,7 @@ RSpec.describe ComputedRule::TotalColorsInRoom do
         expect(house).to receive(:get_distinct_colors).with(section: room4).and_return([])
         subject = described_class.build(house: house, feature: "singular_rule", sections: sections)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("There may not be any room with all four colors in the house (as objects and/or wall color)")
+        expect(subject.text).to eq("There must not be any room with all four colors in the house (as objects and/or wall color)")
       end
     end
 
@@ -52,7 +52,7 @@ RSpec.describe ComputedRule::TotalColorsInRoom do
         expect(house).to receive(:get_distinct_colors).with(section: room4).and_return([])
         subject = described_class.build(house: house, feature: "singular_rule", sections: sections)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("There may not be more than two different colors in any room (as objects and/or wall color)")
+        expect(subject.text).to eq("There must not be more than two different colors in any room (as objects and/or wall color)")
       end
     end
 
