@@ -9,6 +9,7 @@ module ComputedRule
       majority_aspect = house.get_majority(feature)
       case feature
       when "style"
+        majority_aspect = Style.new(majority_aspect).display
         addendum = ""
       when "color"
         majority_aspect = Color.new(majority_aspect).display

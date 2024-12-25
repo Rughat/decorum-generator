@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Add style and furnishing icons
+- Display color words in the correct color
+- Minor rule wording changes
+
 ## [0.1.2] - 2024-12-09
 
 - AspectMustBeMostFrequent rule

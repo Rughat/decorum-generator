@@ -17,26 +17,28 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
     let(:feature) { Section.new(7) }
 
     context "when the feature exists in the room" do
-    let(:specific_furnishing) { Lamp.new(color: Color.new("red")) }
+      let(:specific_furnishing) { Lamp.new(color: Color.new("red")) }
+
       it "randomly builds a rule from the given house with a given feature" do
         expect(furnishings).to receive(:random_real).and_return(specific_type)
         expect(house).to receive(:get_room).with("bathroom").and_return(room)
         expect(room).to receive(:get_furnishing).with(specific_type).and_return(specific_furnishing)
         subject = described_class.build(house: house, feature: feature, furnishings: furnishings)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The bathroom must contain a <span class=\"red\">red<\/span> retro lamp<span class=\"icon-lamp\"><\/span>")
+        expect(subject.text).to eq("The bathroom must contain a <span class=\"red\">red<\/span> retro<span class=\"icon-retro\"><\/span> lamp<span class=\"icon-lamp\"><\/span>")
       end
     end
 
     context "when the feature does not exist in the room" do
-    let(:specific_furnishing) { EmptyFurnishing.new }
+      let(:specific_furnishing) { EmptyLamp.new }
+
       it "randomly builds a rule from the given house with a given feature" do
         expect(furnishings).to receive(:random_real).and_return(specific_type)
         expect(house).to receive(:get_room).with("bathroom").and_return(room)
         expect(room).to receive(:get_furnishing).with(specific_type).and_return(specific_furnishing)
         subject = described_class.build(house: house, feature: feature, furnishings: furnishings)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The bathroom must not contain a lamp")
+        expect(subject.text).to eq("The bathroom must not contain a lamp<span class=\"icon-lamp\"><\/span>")
       end
     end
   end
