@@ -6,15 +6,16 @@ module ComputedRule
 
     def self.build(house:, sections: Section, feature:)
       section = sections.random_multiroom
-      style, furnishing_raw = feature.split("-")
+      s, furnishing_raw = feature.split("-")
       furnishing = furnishing_raw.constantize.new
-      style_count = house.count_styles(style: style, section: section)
+      style = Style.new(s)
+      style_count = house.count_styles(style: style.to_s, section: section)
       furnishing_count = house.count_furnishings(furnishing: furnishing.short_name, section: section)
       rule = create
       rule.text = if furnishing_count == style_count
-                    "The #{section.name} must contain an equal number of #{furnishing.short_name.pluralize}#{furnishing.icon} and #{style} features"
+        "The #{section.name} must contain an equal number of #{furnishing.short_name.pluralize}#{furnishing.icon} and #{style.display} features"
       else
-        "The #{section.name} must contain #{(furnishing_count < style_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than #{style} features"
+        "The #{section.name} must contain #{(furnishing_count < style_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than #{style.display} features"
       end
       rule.save
       rule

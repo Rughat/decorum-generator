@@ -25,7 +25,7 @@ RSpec.describe ComputedRule::ComparableCountOfStyleVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing.short_name, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain fewer wall hangings<span class=\"icon-wall-hanging\"><\/span> than retro features")
+      expect(subject.text).to eq("The top floor must contain fewer wall hangings<span class=\"icon-wall-hanging\"><\/span> than retro<span class=\"icon-retro\"><\/span> features")
     end
 
     it "randomly builds a rule from the given house when there is more of the furnishing than of the style in the section" do
@@ -36,7 +36,7 @@ RSpec.describe ComputedRule::ComparableCountOfStyleVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing.short_name, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain more wall hangings<span class=\"icon-wall-hanging\"><\/span> than retro features")
+      expect(subject.text).to eq("The top floor must contain more wall hangings<span class=\"icon-wall-hanging\"><\/span> than retro<span class=\"icon-retro\"><\/span> features")
     end
 
     it "randomly builds a rule from the given house when there is an equal amount of the furnishing and of the style in the section" do
@@ -47,7 +47,7 @@ RSpec.describe ComputedRule::ComparableCountOfStyleVsFurnishing do
       expect(house).to receive(:count_furnishings).with(furnishing: furnishing.short_name, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain an equal number of wall hangings<span class=\"icon-wall-hanging\"><\/span> and retro features")
+      expect(subject.text).to eq("The top floor must contain an equal number of wall hangings<span class=\"icon-wall-hanging\"><\/span> and retro<span class=\"icon-retro\"><\/span> features")
     end
   end
 end
