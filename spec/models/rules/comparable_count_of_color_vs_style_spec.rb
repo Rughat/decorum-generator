@@ -25,7 +25,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsStyle do
       expect(house).to receive(:count_styles).with(style: style, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain fewer retro objects than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain fewer retro<span class=\"icon-retro\"><\/span> objects than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
 
     it "randomly builds a rule from the given house when there is more of the style than of the color in the section" do
@@ -36,7 +36,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsStyle do
       expect(house).to receive(:count_styles).with(style: style, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain more retro objects than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain more retro<span class=\"icon-retro\"><\/span> objects than <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
 
     it "randomly builds a rule from the given house when there is an equal amount of the style and of the color in the section" do
@@ -47,7 +47,7 @@ RSpec.describe ComputedRule::ComparableCountOfColorVsStyle do
       expect(house).to receive(:count_styles).with(style: style, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain an equal number of retro objects and <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor must contain an equal number of retro<span class=\"icon-retro\"><\/span> objects and <span class=\"blue\">blue<\/span> features (as objects and/or wall colors)")
     end
   end
 end
