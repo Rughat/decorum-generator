@@ -13,8 +13,10 @@ RSpec.describe ComputedRule::RelativeCountOfStyle do
     let(:sections) { class_double(Section) }
     let(:selected_section) { instance_double(Section) }
     let(:opposite_section) { instance_double(Section) }
+    let(:feature) { Style.new("antique") }
 
     it "randomly builds a rule from the given house when there are more in the first section" do
+      expect(Style).to receive(:new).with("antique").and_return(feature)
       expect(sections).to receive(:random_opposable).and_return(selected_section)
       expect(selected_section).to receive(:name).and_return("top floor")
       expect(selected_section).to receive(:opposite).twice.and_return(opposite_section)
@@ -23,7 +25,7 @@ RSpec.describe ComputedRule::RelativeCountOfStyle do
       expect(house).to receive(:count_styles).with(style: "antique", section: opposite_section).and_return(2)
       subject = described_class.build(house: house, feature: "antique", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain more antique objects than the bottom floor")
+      expect(subject.text).to eq("The top floor must contain more antique<span class=\"icon-antique\"><\/span> objects than the bottom floor")
     end
 
     it "randomly builds a rule from the given house when there are fewer in the first section" do
@@ -35,7 +37,7 @@ RSpec.describe ComputedRule::RelativeCountOfStyle do
       expect(house).to receive(:count_styles).with(style: "antique", section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: "antique", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain fewer antique objects than the bottom floor")
+      expect(subject.text).to eq("The top floor must contain fewer antique<span class=\"icon-antique\"><\/span> objects than the bottom floor")
     end
 
     it "randomly builds a rule from the given house when there are an equal amount in both sections" do
@@ -47,7 +49,7 @@ RSpec.describe ComputedRule::RelativeCountOfStyle do
       expect(house).to receive(:count_styles).with(style: "antique", section: opposite_section).and_return(3)
       subject = described_class.build(house: house, feature: "antique", sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain an equal amount of antique objects as the bottom floor")
+      expect(subject.text).to eq("The top floor must contain an equal amount of antique<span class=\"icon-antique\"><\/span> objects as the bottom floor")
     end
   end
 end
