@@ -13,9 +13,9 @@ module ComputedRule
       furnishing_count = house.count_furnishings(furnishing: furnishing.short_name, section: section)
       rule = create
       rule.text = if furnishing_count == color_count
-                    "The #{section.name} must contain an equal number of #{furnishing.short_name.pluralize}#{furnishing.icon} and #{color.display} features (as objects and/or wall colors)".html_safe
+                    "The #{section.display} must contain an equal number of #{furnishing.short_name.pluralize}#{furnishing.icon} and #{color.display} features (as objects and/or wall colors)".html_safe
       else
-        "The #{section.name} must contain #{(furnishing_count < color_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than #{color.display} features (as objects and/or wall colors)".html_safe
+        "The #{section.display} must contain #{(furnishing_count < color_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than #{color.display} features (as objects and/or wall colors)".html_safe
       end
       rule.save
       rule
