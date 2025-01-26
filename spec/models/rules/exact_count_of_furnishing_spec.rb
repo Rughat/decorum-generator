@@ -22,7 +22,7 @@ RSpec.describe ComputedRule::ExactCountOfFurnishing do
         expect(house).to receive(:count_furnishings).with(furnishing: feature.short_name, section: selected_section).and_return(2)
         subject = described_class.build(house: house, feature: feature.class.to_s, sections: sections)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The top floor<span class=\"icon-top-floor\"></span> must contain exactly 2 empty spaces")
+        expect(subject.text).to eq("The top floor<span class=\"icon-top-floor\"></span> must contain exactly 2 empty spaces<span class=\"icon-empty-space\"><\/span>")
       end
     end
 

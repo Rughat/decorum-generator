@@ -1,7 +1,7 @@
 class EmptyWallHanging < WallHanging
   include EmptyMixin
 
-  def icon
+  def parent_icon
     "<span class=\"icon-wall-hanging\"><\/span>".html_safe
   end
 end

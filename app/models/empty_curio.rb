@@ -1,7 +1,7 @@
 class EmptyCurio < Curio
   include EmptyMixin
 
-  def icon
+  def parent_icon
     "<span class=\"icon-curio\"><\/span>".html_safe
   end
 end

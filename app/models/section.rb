@@ -67,7 +67,7 @@ class Section
   end
 
   def opposite
-    opposite_index ? SECTION_ARRAY[opposite_index] : nil
+    @opposite ||= opposite_index ? Section.new(opposite_index) : nil
   end
 
   def to_s

@@ -9,7 +9,7 @@ module ComputedRule
       furnishing_class = furnishings.random_real
       furnishing = house.get_room(section.rooms.first).get_furnishing(furnishing_class)
       rule = create
-      rule.text = (furnishing.empty?) ? "The #{section.display} must not contain a #{furnishing_class.short_name}#{furnishing.icon}" : "The #{section.display} must contain #{furnishing.long_description.downcase}"
+      rule.text = (furnishing.empty?) ? "The #{section.display} must not contain a #{furnishing_class.short_name}#{furnishing_class.new.icon}" : "The #{section.display} must contain #{furnishing.long_description.downcase}"
       rule.save
       rule
     end
