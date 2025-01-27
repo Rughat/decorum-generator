@@ -9,7 +9,7 @@ module ComputedRule
       furnishing = feature.constantize.new
       count = house.count_furnishings(furnishing: furnishing.short_name, section: section)
       rule = create
-      rule.text = "The #{section.name} must contain exactly #{count} #{furnishing.short_name.pluralize(count)}#{furnishing.icon}".html_safe
+      rule.text = "The #{section.display} must contain exactly #{count} #{furnishing.short_name.pluralize(count)}#{furnishing.icon}".html_safe
       rule.save
       rule
     end

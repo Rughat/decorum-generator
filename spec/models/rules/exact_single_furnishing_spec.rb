@@ -4,7 +4,7 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
   describe ".random_feature" do
     it "calls and returns a random feature" do
       expect(Section).to receive(:random_single).and_return(Section.new(7))
-      expect(described_class.random_feature.to_s).to eq("bathroom")
+      expect(described_class.random_feature).to eq(7)
     end
   end
 
@@ -14,6 +14,7 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
     let(:room) { instance_double(Room) }
     let(:specific_type) { Lamp }
     let(:specific_furnishing) { Lamp.new(color: Color.new("red")) }
+    let(:feature_index) { 7 }
     let(:feature) { Section.new(7) }
 
     context "when the feature exists in the room" do
@@ -23,9 +24,10 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
         expect(furnishings).to receive(:random_real).and_return(specific_type)
         expect(house).to receive(:get_room).with("bathroom").and_return(room)
         expect(room).to receive(:get_furnishing).with(specific_type).and_return(specific_furnishing)
-        subject = described_class.build(house: house, feature: feature, furnishings: furnishings)
+        expect(Section).to receive(:new).with(feature_index).and_return(feature)
+        subject = described_class.build(house: house, feature: feature_index, furnishings: furnishings)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The bathroom must contain a <span class=\"red\">red<\/span> retro<span class=\"icon-retro\"><\/span> lamp<span class=\"icon-lamp\"><\/span>")
+        expect(subject.text).to eq("The bathroom<span class=\"icon-bathroom\"><\/span> must contain a <span class=\"red\">red<\/span> retro<span class=\"icon-retro\"><\/span> lamp<span class=\"icon-lamp\"><\/span>")
       end
     end
 
@@ -36,9 +38,10 @@ RSpec.describe ComputedRule::ExactSingleFurnishing do
         expect(furnishings).to receive(:random_real).and_return(specific_type)
         expect(house).to receive(:get_room).with("bathroom").and_return(room)
         expect(room).to receive(:get_furnishing).with(specific_type).and_return(specific_furnishing)
-        subject = described_class.build(house: house, feature: feature, furnishings: furnishings)
+        expect(Section).to receive(:new).with(feature_index).and_return(feature)
+        subject = described_class.build(house: house, feature: feature_index, furnishings: furnishings)
         expect(subject).to be_a(described_class)
-        expect(subject.text).to eq("The bathroom must not contain a lamp<span class=\"icon-lamp\"><\/span>")
+        expect(subject.text).to eq("The bathroom<span class=\"icon-bathroom\"><\/span> must not contain a lamp<span class=\"icon-lamp\"><\/span>")
       end
     end
   end

@@ -1,7 +1,7 @@
 class EmptyLamp < Lamp
   include EmptyMixin
 
-  def icon
+  def parent_icon
     "<span class=\"icon-lamp\"><\/span>".html_safe
   end
 end

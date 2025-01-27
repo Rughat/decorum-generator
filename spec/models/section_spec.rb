@@ -21,7 +21,7 @@ RSpec.shared_examples "an opposable section object" do |subject, name, rooms, in
   it_should_behave_like "a section object", subject, name, rooms, index
 
   it "should have an opposite section" do
-    expect(subject.opposite).to be_a(OpenStruct)
+    expect(subject.opposite).to be_a(Section)
     expect(subject.opposite.index).to eq(opposite_index)
   end
 end

@@ -17,11 +17,11 @@ RSpec.describe ComputedRule::ExactCountOfColor do
     it "randomly builds a rule from the given house with a given feature" do
       expect(Color).to receive(:new).with("warm").and_return(feature)
       expect(sections).to receive(:random).and_return(selected_section)
-      expect(selected_section).to receive(:name).and_return("top floor")
+      expect(selected_section).to receive(:display).and_return("top floor<span class=\"icon-top-floor\"></span>".html_safe)
       expect(house).to receive(:count_colors).with(color: feature, section: selected_section).and_return(3)
       subject = described_class.build(house: house, feature: feature.color, sections: sections)
       expect(subject).to be_a(described_class)
-      expect(subject.text).to eq("The top floor must contain exactly 3 warm (<span class=\"red\">red<\/span> or <span class=\"yellow\">yellow<\/span>) features (as objects and/or wall colors)")
+      expect(subject.text).to eq("The top floor<span class=\"icon-top-floor\"></span> must contain exactly 3 warm (<span class=\"red\">red<\/span> or <span class=\"yellow\">yellow<\/span>) features (as objects and/or wall colors)")
     end
   end
 end

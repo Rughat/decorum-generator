@@ -9,7 +9,7 @@ module ComputedRule
       style = Style.new(feature)
       count = house.count_styles(style: feature, section: section)
       rule = create
-      rule.text = "The #{section.name} must contain exactly #{count} #{style.display} #{"object".pluralize(count)}"
+      rule.text = "The #{section.display} must contain exactly #{count} #{style.display} #{"object".pluralize(count)}"
       rule.save
       rule
     end

@@ -11,9 +11,9 @@ module ComputedRule
       opposite_count = house.count_furnishings(furnishing: furnishing.short_name, section: section.opposite)
       rule = create
       rule.text = if count == opposite_count
-        "The #{section.name} must contain an equal amount of #{furnishing.short_name.pluralize}#{furnishing.icon} as the #{section.opposite.name}".html_safe
+        "The #{section.display} must contain an equal amount of #{furnishing.short_name.pluralize}#{furnishing.icon} as the #{section.opposite.display}".html_safe
       else
-        "The #{section.name} must contain #{(count < opposite_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than the #{section.opposite.name}".html_safe
+        "The #{section.display} must contain #{(count < opposite_count) ? "fewer" : "more"} #{furnishing.short_name.pluralize}#{furnishing.icon} than the #{section.opposite.display}".html_safe
       end
       rule.save
       rule

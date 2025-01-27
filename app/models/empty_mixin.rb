@@ -20,7 +20,7 @@ module EmptyMixin
   end
 
   def icon
-    ""
+    "<span class=\"icon-empty-space\"><\/span>".html_safe
   end
 
   module ClassMethods

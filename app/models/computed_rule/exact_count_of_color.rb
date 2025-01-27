@@ -9,7 +9,7 @@ module ComputedRule
       color = Color.new(feature)
       count = house.count_colors(color: color, section: section)
       rule = create
-      rule.text = "The #{section.name} must contain exactly #{count} #{color.display} #{"feature".pluralize(count)} (as objects and/or wall colors)"
+      rule.text = "The #{section.display} must contain exactly #{count} #{color.display} #{"feature".pluralize(count)} (as objects and/or wall colors)"
       rule.save
       rule
     end

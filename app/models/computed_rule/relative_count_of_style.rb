@@ -11,9 +11,9 @@ module ComputedRule
       opposite_count = house.count_styles(style: feature, section: section.opposite)
       rule = create
       rule.text = if count == opposite_count
-        "The #{section.name} must contain an equal amount of #{style.display} objects as the #{section.opposite.name}"
+        "The #{section.display} must contain an equal amount of #{style.display} objects as the #{section.opposite.display}"
       else
-        "The #{section.name} must contain #{(count < opposite_count) ? "fewer" : "more"} #{style.display} objects than the #{section.opposite.name}"
+        "The #{section.display} must contain #{(count < opposite_count) ? "fewer" : "more"} #{style.display} objects than the #{section.opposite.display}"
       end
       rule.save
       rule
