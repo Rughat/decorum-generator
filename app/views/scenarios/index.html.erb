@@ -6,7 +6,7 @@
       <th>Scenario Number</th>
       <th>Player Count</th>
       <th>Requirements Per Player</th>
-      <th></th>
+      <th>Start game?</th>
     </tr>
     <% @scenarios.each do |scenario| %>
       <%= render(partial: "scenarios/list", locals: { scenario: scenario }) %>
