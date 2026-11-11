@@ -12,7 +12,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
         Capybara.server = :puma, {Silent: true}
         Capybara.server_host = "0.0.0.0"
         Capybara.server_port = 3001
-        Capybara.app_host = "http://web:#{Capybara.server_port}"
+        Capybara.app_host = "http://#{ENV.fetch("HOSTNAME")}:#{Capybara.server_port}"
 
         driven_by :selenium, using: :chrome,
           options: {
